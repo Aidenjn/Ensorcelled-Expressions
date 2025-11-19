@@ -10,16 +10,17 @@
 .env.local
 .env.*.local
 
-# Node
+# Node modules (all projects)
 node_modules/
 
-# Next.js build output
-.next/
+# Next.js build output (per project)
+site/.next/
+cms/.next/
 out/
 
 # Sanity build output
 .sanity/
-dist/
+cms/dist/
 
 # Logs
 npm-debug.log*

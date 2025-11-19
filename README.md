@@ -14,18 +14,17 @@ This repo is structured as a npm workspace monorepo for simplicity, shared depen
 
 ```
 /
-├── site   # Next.js website (deployed to Vercel)
+├── site       # Next.js website (deployed to Vercel)
 │
-├── cms       # Sanity Studio (locally run to manage content)
+├── cms        # Sanity Studio (locally run to manage content)
 │
-├── package.json                      # Workspace root config
 └── README.md
 ```
 
 
 # 🚀 Technologies
 
-Frontend
+Frontend Site
 - Next.js
 - React
 - Tailwind CSS
@@ -45,63 +44,63 @@ Tooling
 
 # 📦 Setup
 
-This repository uses npm workspaces to manage the two applications under a single top-level configuration.
-
-Root package.json:
-- defines the workspace projects
-- provides shared dev scripts
-- contains the unified node_modules
-
-
-
 ## 🛠️ Install Dependencies
 
-At the root of the repo:
+### Site
 
-`npm install`
+```
+cd site
+npm install
+```
 
-This installs dependencies for both the Next.js site and the Sanity Studio.
-
+### Sanity Studio CMS
+```
+cd cms
+npm install
+```
 
 
 # 🏃 Development
 
-Run the gallery website
+## Run the site
 
 `npm run dev:site`
 
-Runs the Next.js development server:
+This runs the Next.js development server locally:
 
 http://localhost:3000
 
 
 
-
-Run the Sanity Studio
+## Run the Sanity Studio
 
 `npm run dev:cms`
 
-Runs the Sanity Studio locally:
+This runs the Sanity Studio locally:
 
 http://localhost:3333
 
 
-
-
 ## 🏗️ Build Commands
 
-Build the website:
+Build the site:
 
-`npm run build:site`
+```
+cd site
+npm run build
+```
 
 Build the CMS:
 
-`npm run build:cms`
+```
+cd cms
+npm run build
+```
 
 
 # 🚀 Deployment
 
-## Next.js Gallery (Primary Site)
+## Next.js Site
 
 The `site` project is deployed through Vercel.
 
@@ -115,8 +114,7 @@ Vercel automatically handles workspace-based installs.
 
 ## Sanity CMS (Content Managent Interface)
 
-This is only meant to be run locally, as it's purpose is to modify and add content for the site.
-It could be hosted, but that is out of the scope for this project.
+The CMS is meant to be run locally to manage content. Hosting is optional and out of scope.
 
 # 🔐 Environment Variables
 
@@ -136,24 +134,16 @@ Don't commit these to Git.
 
 # 📁 Git Ignore Rules
 
-The root .gitignore excludes:
-- environment files
-- Node modules
-- Next.js build output
-- Sanity build output
+Each project handles its own ignored files. The global rules include:
+
+- node_modules/
+- .next/ (Next.js build output)
+- .sanity/ and dist/ (CMS build output)
+- Environment files (.env*)
 - OS junk files (.DS_Store)
-
-# 🧰 Scripts Summary
-
-Script	Description
-`npm run dev:gallery`: Run Next.js dev server  
-`npm run dev:cms`: Run Sanity Studio dev server  
-`npm run build:gallery`: Build the Next.js site  
-`npm run build:cms`: Build the Sanity Studio  
-`npm install`: Install all workspace deps  
-
+- Editor folders (.vscode/, .idea/)
 
 # 📖 Useful Things of Note
 - The CMS and website share the same Git repository but operate independently.
 - The CMS is meant to be run locally only. It's purpose is to easily add and manage content for the site.
-- Vercel automatically supports npm workspaces — no special config needed.
+- Vercel supports deploying the Next.js site from site/.
