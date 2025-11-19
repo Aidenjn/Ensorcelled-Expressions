@@ -1,0 +1,13 @@
+'use client';
+
+import ArtworkCard from './ArtworkCard';
+
+export default function ArtGrid({ artworks }: { artworks: any[] }) {
+  return (
+    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-6">
+      {artworks.map((artwork) => (
+        <ArtworkCard key={artwork._id} artwork={artwork} />
+      ))}
+    </div>
+  )
+}
