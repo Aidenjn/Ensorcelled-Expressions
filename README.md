@@ -116,22 +116,6 @@ Vercel automatically handles workspace-based installs.
 
 The CMS is meant to be run locally to manage content. Hosting is optional and out of scope.
 
-# 🔐 Environment Variables
-
-Create the following files as needed:
-
-- site/.env.local
-- cms/.env.local
-
-Common variables include:
-
-- `NEXT_PUBLIC_SANITY_PROJECT_ID=xxxx`
-- `NEXT_PUBLIC_SANITY_DATASET=production`
-- `SANITY_API_READ_TOKEN=xxxx`
-- `SANITY_WRITE_TOKEN=xxxx` (Studio only)
-
-Don't commit these to Git.
-
 # 📁 Git Ignore Rules
 
 Each project handles its own ignored files. The global rules include:

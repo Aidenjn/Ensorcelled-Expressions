@@ -10,8 +10,10 @@
 .env.local
 .env.*.local
 
-# Node modules (all projects)
+# Node modules (root + per-project)
 node_modules/
+site/node_modules/
+cms/node_modules/
 
 # Next.js build output (per project)
 site/.next/
@@ -30,3 +32,6 @@ yarn-error.log*
 # Editor folders
 .vscode/
 .idea/
+
+# Optional test/coverage artifacts
+coverage/
