@@ -14,9 +14,9 @@ This repo is structured as a npm workspace monorepo for simplicity, shared depen
 
 ```
 /
-├── ensorcelled-expressions-gallery   # Next.js website (deployed to Vercel)
+├── site   # Next.js website (deployed to Vercel)
 │
-├── ensorcelled-expressions-cms       # Sanity Studio (locally run to manage content)
+├── cms       # Sanity Studio (locally run to manage content)
 │
 ├── package.json                      # Workspace root config
 └── README.md
@@ -103,10 +103,10 @@ Build the CMS:
 
 ## Next.js Gallery (Primary Site)
 
-The `ensorcelled-expressions-site` project is deployed through Vercel.
+The `site` project is deployed through Vercel.
 
 When setting up the project in Vercel:
-- Project Directory: `ensorcelled-expressions-site`
+- Project Directory: `site`
 - Build Command: `npm run build`
 - Install Command: `npm install`
 - Output Directory: `.next`
@@ -122,8 +122,8 @@ It could be hosted, but that is out of the scope for this project.
 
 Create the following files as needed:
 
-- ensorcelled-expressions-gallery/.env.local
-- ensorcelled-expressions-cms/.env.local
+- site/.env.local
+- cms/.env.local
 
 Common variables include:
 
