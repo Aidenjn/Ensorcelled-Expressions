@@ -14,7 +14,7 @@ export default function Home() {
 
       {/* Story Sections */}
       <StorySection
-          image_url = "images/clay_tilly_vs_real_tilly.jpg"
+          image_url = "/images/clay_tilly_vs_real_tilly.jpg"
           heading="Emotionally Expressive"
           flow_left={false}
       >
@@ -23,7 +23,7 @@ export default function Home() {
         Through form, I endeavor to create expressions that invite answers to the question: <i>"What could one witness to make a face like that?"</i>
       </StorySection>
       <StorySection
-          image_url = "images/goblin_mug_kiss.jpg"
+          image_url = "/images/goblin_mug_kiss.jpg"
           heading="Functional and with Purpose"
           flow_left={true}
       >
@@ -31,7 +31,7 @@ export default function Home() {
         I find joy in seeing my work engaged with, so whether it be as versatile as a mug, or as specific as a sculpture designed to keep a pole upright, I ensure the art I make holds practical function.
       </StorySection>
       <StorySection
-          image_url = "images/painting_the_alien.jpg"
+          image_url = "/images/painting_the_alien.jpg"
           heading="Impishly Irregular"
           flow_left={false}
       >

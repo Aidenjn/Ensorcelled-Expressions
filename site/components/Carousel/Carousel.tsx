@@ -6,21 +6,21 @@ import { WavyShape } from '@/lib/types/WavyShapes'
 import WavyBorderImage from '@/components/WavyBorderImage/WavyBorderImage';
 import CarouselButtons from '@/components/Carousel/CarouselButtons';
 
-let image_has_changed: boolean = false;
-
 export default function Carousel({ images }: { images: any[] }) {
   const [index, setIndex] = useState(0)
+  const [imageHasChanged, setImageHasChanged] = useState(false)
+
   if (!images || images.length === 0) return null
 
   const next = () => {
-    setIndex((i) => (i + 1) % images.length);
-    image_has_changed = true;
-  };
+    setIndex((i) => (i + 1) % images.length)
+    setImageHasChanged(true)
+  }
 
   const prev = () => {
-    setIndex((i) => (i - 1 + images.length) % images.length);
-    image_has_changed = true;
-  };
+    setIndex((i) => (i - 1 + images.length) % images.length)
+    setImageHasChanged(true)
+  }
 
   return (
     <div className="flex flex-col items-center w-full h-full">
@@ -28,12 +28,12 @@ export default function Carousel({ images }: { images: any[] }) {
         <WavyBorderImage
           imageUrl={urlFor(images[index]).width(800).height(600).url()}
           shape={WavyShape.Rectangle}
-          disableLoadingEffect={image_has_changed}
+          disableLoadingEffect={imageHasChanged}
         />
       </div>
 
       {images.length > 1 && (
-        <CarouselButtons onPrev={prev} onNext={next}/>
+        <CarouselButtons onPrev={prev} onNext={next} />
       )}
     </div>
   )
