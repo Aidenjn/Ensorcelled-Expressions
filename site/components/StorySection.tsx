@@ -29,7 +29,7 @@ export default function StoryText({
         className="md:w-1/2 mb-8 md:mb-0 w-full flex justify-center"
       >
         <div className="relative w-full aspect-square lg:max-w-3/4">
-          <WavyBorderImage imageUrl={ image_url } shape={ WavyShape.Square }/>
+          <WavyBorderImage imageUrl={ image_url } shape={ WavyShape.Square } minimumLoadingTimeMS={1000}/>
         </div>
       </motion.div>
 
