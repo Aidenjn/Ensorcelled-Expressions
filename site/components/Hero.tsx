@@ -4,6 +4,7 @@ import WavyBorderImage from "@/components/WavyBorderImage/WavyBorderImage";
 import { WavyShape } from "@/lib/types/WavyShapes";
 import { motion } from "framer-motion";
 import MagicText from "./MagicText";
+import { CustomIcon } from "@/lib/types/CustomIcon";
 
 export default function Hero() {
   return (
@@ -28,6 +29,7 @@ export default function Hero() {
           shape={WavyShape.Rectangle}
           disableLoadingEffect={false}
           minimumLoadingTimeMS={1500}
+          loadingIcon={CustomIcon.SpiralCutGaze}
         />
       </div>
 

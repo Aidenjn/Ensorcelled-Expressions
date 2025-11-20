@@ -2,6 +2,7 @@ import { HTMLAttributes } from "react";
 import WavyBorderImageMask from "./WavyBorderImageMask";
 import WavyBorderImageBorder from "./WavyBorderImageBorder";
 import { WavyShape } from "@/lib/types/WavyShapes";
+import { CustomIcon } from "@/lib/types/CustomIcon";
 
 interface WavyBorderImageProps extends HTMLAttributes<HTMLDivElement> {
   imageUrl: string | null;
@@ -11,6 +12,7 @@ interface WavyBorderImageProps extends HTMLAttributes<HTMLDivElement> {
   alt?: string;
   width?: number | string;
   height?: number | string;
+  loadingIcon?: CustomIcon;
 }
 
 const WavyBorderImage =
@@ -24,6 +26,7 @@ const WavyBorderImage =
   height = "100%",
   className = "",
   style,
+  loadingIcon,
   ...rest
 }: WavyBorderImageProps) => {
 
@@ -39,6 +42,7 @@ const WavyBorderImage =
         alt={alt}
         disableLoadingEffect={disableLoadingEffect}
         minimumLoadingTimeMS={minimumLoadingTimeMS}
+        loadingIcon={loadingIcon}
       />
 
       <WavyBorderImageBorder shape={shape} />

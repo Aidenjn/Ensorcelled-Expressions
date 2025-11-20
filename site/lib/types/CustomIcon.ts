@@ -1,0 +1,16 @@
+export enum CustomIcon {
+  SpiralCutGaze = "SpiralCutGaze",
+  Sleepy = "Sleepy",
+  StarryEyes = "StarryEyes",
+  ExcitedGlace = "ExcitedGlace",
+  JoySquint = "JoySquint",
+  Alien = "Alien",
+  Dog = "Dog",
+  Goblin = "Goblin",
+  Confused = "Confused",
+  Demon = "Demon",
+  Mug = "Mug",
+  Pot = "Pot",
+  Dispenser = "Dispenser",
+  Oddity = "Oddity",
+}

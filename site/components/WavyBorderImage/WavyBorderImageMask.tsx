@@ -1,26 +1,9 @@
-import SpiralCutGazeIcon from "@/public/custom_graphics/spiral_cut_gaze.svg";
-import SleepyIcon from "@/public/custom_graphics/sleep.svg";
-import StarryEyesIcon from "@/public/custom_graphics/starry_eyes.svg";
-import ExcitedGlaceIcon from "@/public/custom_graphics/excited_gaze_down.svg";
-import JoySquintIcon from "@/public/custom_graphics/joy_squint.svg";
-
+// components/WavyBorderImageMask/WavyBorderImageMask.tsx
 import React, { useState, useEffect, useMemo } from "react";
 import { getWavyShapeData } from "./utils/wavyShapes";
 import { WavyShape } from "@/lib/types/WavyShapes";
-
-const ICONS = [
-  SpiralCutGazeIcon,
-  SleepyIcon,
-  StarryEyesIcon,
-  ExcitedGlaceIcon,
-  JoySquintIcon,
-];
-
-// Deterministic choice of loading icon based on URL
-const pickIconForUrl = (url: string) => {
-  const hash = [...url].reduce((acc, c) => acc + c.charCodeAt(0), 0);
-  return ICONS[hash % ICONS.length];
-};
+import Icon from "@/components/CustomIconSVG";
+import { CustomIcon } from "@/lib/types/CustomIcon";
 
 interface Props {
   imageUrl: string | null;
@@ -28,6 +11,7 @@ interface Props {
   disableLoadingEffect?: boolean;
   minimumLoadingTimeMS?: number;
   alt?: string;
+  loadingIcon?: CustomIcon;
 }
 
 export default function WavyBorderImageMask({
@@ -36,21 +20,20 @@ export default function WavyBorderImageMask({
   disableLoadingEffect = false,
   minimumLoadingTimeMS = 400,
   alt = "",
+  loadingIcon,
 }: Props) {
   const [loaded, setLoaded] = useState(false);
   const [minDone, setMinDone] = useState(false);
 
   const { d, viewBox, pathClass } = getWavyShapeData(shape);
 
-  // --- FIX #1: Stable clip ID so SVG never mismatches on client navigation ---
+  // --- Stable clip ID to avoid SVG mismatches on client navigation ---
   const clipId = useMemo(() => {
     if (!imageUrl) return "clip-none";
     return "clip-" + imageUrl.replace(/[^a-zA-Z0-9]/g, "");
   }, [imageUrl]);
 
-  const Icon = imageUrl ? pickIconForUrl(imageUrl) : SpiralCutGazeIcon;
-
-  // --- FIX #2: Reset loading state correctly every time imageUrl changes ---
+  // --- Reset loading state every time imageUrl changes ---
   useEffect(() => {
     if (!imageUrl || disableLoadingEffect) {
       setLoaded(true);
@@ -65,14 +48,15 @@ export default function WavyBorderImageMask({
 
     const img = new Image();
     img.src = imageUrl;
-    img.onload = () => {
-      setLoaded(true);
-    };
+    img.onload = () => setLoaded(true);
 
     return () => clearTimeout(timer);
   }, [imageUrl, disableLoadingEffect, minimumLoadingTimeMS]);
 
   const showImage = loaded && minDone;
+
+  // --- Determine which icon to show ---
+  const iconSeed = imageUrl || undefined;
 
   return (
     <svg className="splat" viewBox={viewBox} preserveAspectRatio="none">
@@ -105,7 +89,11 @@ export default function WavyBorderImageMask({
             shapeRendering: "geometricPrecision",
           }}
         >
-          <Icon className="svg-loading-icon" />
+          <Icon
+            icon={loadingIcon}
+            seed={loadingIcon ? undefined : iconSeed}
+            className="svg-loading-icon"
+          />
         </g>
       )}
 
@@ -119,10 +107,7 @@ export default function WavyBorderImageMask({
           preserveAspectRatio="xMidYMid slice"
           style={{
             opacity: showImage ? 1 : 0,
-            filter:
-              disableLoadingEffect || showImage
-                ? "none"
-                : "blur(15px)",
+            filter: disableLoadingEffect || showImage ? "none" : "blur(15px)",
             transition: disableLoadingEffect
               ? "none"
               : "opacity 0.8s ease, filter 0.6s ease",

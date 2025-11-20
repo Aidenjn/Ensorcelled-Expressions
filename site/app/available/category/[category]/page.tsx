@@ -2,6 +2,7 @@ import { client } from '@/lib/sanity';
 import ArtGrid from '@/components/ArtGrid';
 import { notFound } from 'next/navigation';
 import PageHeading from '@/components/PageHeading';
+import { CustomIcon } from '@/lib/types/CustomIcon';
 
 const tagQuery = `
   *[_type == "tag" && slug.current == $category][0]{
@@ -20,6 +21,14 @@ const artworksQuery = `
     dateCreated
   } | order(dateCreated desc)
 `;
+
+function getIconFromCategory(tag: string): CustomIcon | null {
+  switch (tag) {
+    case "soap-dispenser": return CustomIcon.Dispenser;
+    case "soap-dispenser": return CustomIcon.Dispenser;
+    default: return null 
+  }
+}
 
 export default async function AvailableCategoryPage({
   params,
@@ -41,7 +50,10 @@ export default async function AvailableCategoryPage({
 
   return (
     <main className="max-w-5xl mx-auto p-6">
-      <PageHeading titleText={ categoryDoc.plural_title } />
+      { getIconFromCategory(category) ?
+        <PageHeading titleText={ categoryDoc.plural_title } icon={ getIconFromCategory(category)! } /> :
+        <PageHeading titleText={ categoryDoc.plural_title }/>
+      }
       <ArtGrid artworks={artworks} />
     </main>
   );

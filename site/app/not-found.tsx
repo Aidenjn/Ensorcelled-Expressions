@@ -1,4 +1,4 @@
-import NotFoundIcon from '@/public/custom_graphics/sleep.svg';
+import NotFoundIcon from '@/public/custom_graphics/confused.svg';
 import PageHeading from '@/components/PageHeading';
 
 export default function NotFound() {

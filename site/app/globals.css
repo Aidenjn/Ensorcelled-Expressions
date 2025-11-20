@@ -125,7 +125,7 @@ svg.splat {
 }
 
 .nav-focus {
-  @apply text-on_foreground_text_color;
+  @apply text-on_foreground_text_color stroke-on_foreground_text_color;
   text-decoration-line: underline;
   text-decoration-style: wavy;
   text-decoration-color: var(--text-focus_text_color);

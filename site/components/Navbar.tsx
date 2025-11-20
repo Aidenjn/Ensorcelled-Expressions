@@ -5,26 +5,24 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import NavItem from './NavItem';
-
-import LogoIcon from '@/public/custom_graphics/spiral_cut_gaze.svg';
-import AboutIcon from '@/public/custom_graphics/joy_squint.svg';
-import GalleryIcon from '@/public/custom_graphics/excited_gaze_down.svg';
-import AvailableArtIcon from '@/public/custom_graphics/starry_eyes.svg';
+import CustomIconSVG from '@/components/CustomIconSVG';
+import { CustomIcon } from '@/lib/types/CustomIcon';
 import GraspHand from '@/public/custom_graphics/grasphand.svg';
 
 /* -------------------------------------------------------
- * Static Navigation Data (clean, reusable, testable)
+ * Static Navigation Data
  * ----------------------------------------------------- */
 
 const CATEGORIES = [
-  { name: "Mugs", slug: "mugs" },
-  { name: "Pots", slug: "pots" },
-  { name: "Soap Dispensers", slug: "soap-dispensers" },
-  { name: "Oddities", slug: "oddities" },
+  { name: "Mugs", slug: "mugs", icon: CustomIcon.Mug },
+  { name: "Pots", slug: "pots", icon: CustomIcon.Pot },
+  { name: "Soap Dispensers", slug: "soap-dispensers", icon: CustomIcon.Dispenser },
+  { name: "Oddities", slug: "oddities", icon: CustomIcon.Confused },
 ];
 
 const GALLERY_DROPDOWN = CATEGORIES.map(c => ({
   name: c.name,
+  icon: c.icon,
   href: `/gallery/category/${c.slug}`,
 }));
 
@@ -37,24 +35,24 @@ const NAV_LINKS = [
   {
     name: 'About',
     href: '/',
-    icon: <AboutIcon className="w-8 h-8" stroke="currentColor" />
+    icon: CustomIcon.JoySquint,
   },
   {
     name: 'Gallery',
     href: '/gallery',
-    icon: <GalleryIcon className="w-8 h-8" stroke="currentColor" />,
+    icon: CustomIcon.ExcitedGlace,
     dropdown: GALLERY_DROPDOWN,
   },
   {
     name: 'Available Art',
     href: '/available',
-    icon: <AvailableArtIcon className="w-8 h-8" stroke="currentColor" />,
+    icon: CustomIcon.StarryEyes,
     // dropdown: AVAILABLE_ART_DROPDOWN, // enable anytime
   },
 ];
 
 /* -------------------------------------------------------
- * Small subcomponents (cleaner JSX)
+ * Small subcomponents
  * ----------------------------------------------------- */
 
 function MobileMenuButton({ open, onClick }: { open: boolean; onClick: () => void }) {
@@ -78,7 +76,7 @@ function MobileMenuButton({ open, onClick }: { open: boolean; onClick: () => voi
 function Logo() {
   return (
     <Link href="/" className="flex items-center nav-link">
-      <LogoIcon className="w-14 h-14 mr-5" />
+      <CustomIconSVG icon={CustomIcon.SpiralCutGaze} className="w-14 h-14 mr-5" />
       <span className="font-bold text-lg">Ensorcelled Expressions</span>
     </Link>
   );
@@ -103,7 +101,11 @@ export default function Navbar() {
             {/* Desktop Nav */}
             <ul className="hidden md:flex items-center space-x-6">
               {NAV_LINKS.map(link => (
-                <NavItem key={link.href} {...link} />
+                <NavItem
+                  key={link.href}
+                  {...link}
+                  icon={link.icon}
+                />
               ))}
             </ul>
 
@@ -131,6 +133,7 @@ export default function Navbar() {
                 <NavItem
                   key={link.href}
                   {...link}
+                  icon={link.icon}
                   isMobile
                   closeMobileMenu={() => setMobileMenuOpen(false)}
                 />

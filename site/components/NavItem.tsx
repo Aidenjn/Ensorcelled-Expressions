@@ -4,16 +4,19 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import CustomIconSVG from "@/components/CustomIconSVG";
+import { CustomIcon } from "@/lib/types/CustomIcon";
 
 interface DropdownItem {
   name: string;
   href: string;
+  icon: CustomIcon;
 }
 
 interface NavItemProps {
   name: string;
   href: string;
-  icon: React.ReactNode;
+  icon: CustomIcon; // <-- now just the enum
   dropdown?: DropdownItem[];
   isMobile?: boolean;
   closeMobileMenu?: () => void;
@@ -65,11 +68,11 @@ function MobileNavItem({
         <Link
           href={href}
           onClick={closeMobileMenu}
-          className={`flex items-center gap-2 ${
+          className={`flex items-center gap-2 nav-link ${
             isActive ? "nav-focus" : "hover:text-hover_text_color"
           }`}
         >
-          {icon}
+          <CustomIconSVG icon={icon} className="w-6 h-6" /> {/* <-- Render Icon internally */}
           {name}
         </Link>
 
@@ -78,7 +81,7 @@ function MobileNavItem({
           <button
             onClick={() => setOpen((prev) => !prev)}
             aria-label="Toggle dropdown"
-            className="p-2 -mr-2" // small tap target offset
+            className="p-2 -mr-2"
           >
             <ArrowIcon open={open} />
           </button>
@@ -99,9 +102,10 @@ function MobileNavItem({
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="px-4 py-2 hover:text-hover_text_color block"
+                    className="px-3 py-2 hover:text-hover_text_color block nav-link"
                     onClick={closeMobileMenu}
                   >
+                    <CustomIconSVG icon={item.icon} className="w-6 h-6 inline mr-2" />
                     {item.name}
                   </Link>
                 </li>
@@ -143,7 +147,7 @@ function DesktopNavItem({
           isActive ? "font-bold text-focus_text_color nav-focus" : "nav-link"
         }`}
       >
-        {icon}
+        <CustomIconSVG icon={icon} className="w-6 h-6" /> {/* <-- Render Icon internally */}
         {name}
       </Link>
 
@@ -156,11 +160,12 @@ function DesktopNavItem({
               exit={{ opacity: 0, scaleY: 0 }}
               style={{ originY: 0 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full left-0 bg-foreground shadow-lg rounded-md overflow-hidden"
+              className="absolute top-full -left-2 pt-1 pb-3 bg-foreground shadow-lg rounded-md overflow-hidden text-on_foreground_text_color"
             >
               {dropdown.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="block px-4 py-2 nav-link">
+                  <Link href={item.href} className="block ml-0 px-4 py-2 nav-link w-fit whitespace-nowrap">
+                    <CustomIconSVG icon={item.icon} className="w-6 h-6 inline mr-2" />
                     {item.name}
                   </Link>
                 </li>

@@ -1,4 +1,4 @@
-import { Artwork } from '@/lib/types/SanityObjectTypes';
+import { Artwork } from '@/lib/types/SanityObjects';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { urlFor } from '@/lib/image';

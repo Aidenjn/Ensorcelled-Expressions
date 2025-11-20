@@ -1,4 +1,4 @@
-import { Artwork } from '@/lib/types/SanityObjectTypes';
+import { Artwork } from '@/lib/types/SanityObjects';
 
 export default function SaleButton(artwork: Artwork) {
   switch (artwork.saleStatus) {

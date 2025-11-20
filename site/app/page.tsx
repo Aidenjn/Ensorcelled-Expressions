@@ -2,6 +2,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Hero from "@/components/Hero"
 import StorySection from "@/components/StorySection";
+import { CustomIcon } from "@/lib/types/CustomIcon";
+import CustomIconSVG from "@/components/CustomIconSVG";
 
 export default function Home() {
   const { scrollY } = useScroll();
@@ -17,6 +19,7 @@ export default function Home() {
           image_url = "/images/clay_tilly_vs_real_tilly.jpg"
           heading="Emotionally Expressive"
           flow_left={false}
+          icon={ CustomIcon.Dog }
       >
         I strive to make my art emotionally expressive.
         I do this by twisting (often inhuman) faces into my work.
@@ -24,8 +27,9 @@ export default function Home() {
       </StorySection>
       <StorySection
           image_url = "/images/goblin_mug_kiss.jpg"
-          heading="Functional and with Purpose"
+          heading="Functional with Purpose"
           flow_left={true}
+          icon={ CustomIcon.Demon }
       >
         It is important to me that every piece I make serves at least one use in addition to being decorative.
         I find joy in seeing my work engaged with, so whether it be as versatile as a mug, or as specific as a sculpture designed to keep a pole upright, I ensure the art I make holds practical function.
@@ -34,6 +38,7 @@ export default function Home() {
           image_url = "/images/painting_the_alien.jpg"
           heading="Impishly Irregular"
           flow_left={false}
+          icon={ CustomIcon.Alien}
       >
         My work is never duplicative.
         I make my pieces by wheel and hand, giving each a unique combination of expression, size, and color.
@@ -48,7 +53,7 @@ export default function Home() {
           transition={{ duration: 0.6 }}
           className="text-4xl font-bold mb-6"
         >
-          Further Ensorcellment
+          <CustomIconSVG icon={ CustomIcon.SpiralCutGaze } className="w-10 h-10 sm:w-15 sm:h-15 mr-1 sm:mr-5 stroke-white inline-block" /> Further Ensorcellment
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
