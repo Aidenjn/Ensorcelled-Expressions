@@ -43,7 +43,7 @@ export default function RootLayout({
         <div className="bg-background page-main">
           <Navbar />
           {/* Main content padding */}
-          <main className="-mt-12 -mb-12 ml-18 mr-18">
+          <main className="-my-1 sm:-my-8 mx-4 sm:mx-14 md:mx-18 lg:mx-18">
             {/* Content */}
             {children}
           </main>
