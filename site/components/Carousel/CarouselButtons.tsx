@@ -1,25 +1,33 @@
+'use client';
+
+import { motion } from "framer-motion";
+
 export default function CarouselButtons({
   onPrev,
-  onNext
+  onNext,
 }: {
   onPrev: () => void;
   onNext: () => void;
 }) {
   return (
     <div className="flex items-center gap-4">
-      <button
+      <motion.button
+        whileTap={{ scale: 0.80 }}
+        transition={{ type: "spring", stiffness: 500, damping: 20 }}
         onClick={onPrev}
-        className="pr-4 pl-4 pb-2 font-bold text-5xl rounded-full border-6 border-foreground bg-foreground hover:border-hover_background_color nav-link"
+        className="carousel-button"
       >
         ‹
-      </button>
+      </motion.button>
 
-      <button
+      <motion.button
+        whileTap={{ scale: 0.80 }}
+        transition={{ type: "spring", stiffness: 500, damping: 20 }}
         onClick={onNext}
-        className="pr-4 pl-4 pb-2 font-bold text-5xl rounded-full border-6 border-foreground bg-foreground hover:border-hover_background_color nav-link"
+        className="carousel-button"
       >
         ›
-      </button>
+      </motion.button>
     </div>
   );
 }

@@ -116,6 +116,22 @@ svg.splat {
   stroke-width: 60;
 }
 
+.carousel-button {
+  @apply
+    pr-4
+    pl-4
+    pb-2
+    font-bold
+    text-5xl
+    rounded-full
+    border-6
+    border-foreground
+    bg-foreground
+    text-background
+    hover:border-hover_background_color
+    hover:text-hover_text_color;
+}
+
 .nav-link {
   @apply
     stroke-on_foreground_text_color
