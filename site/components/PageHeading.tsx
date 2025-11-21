@@ -51,7 +51,7 @@ export default function PageHeading({
       {descriptionText && (
         <motion.p
           variants={itemVariants}
-          className="mt-4 text-foreground max-w-2xl mx-auto"
+          className="mt-4 mb-2 text-foreground max-w-2xl mx-auto"
         >
           {descriptionText}
         </motion.p>

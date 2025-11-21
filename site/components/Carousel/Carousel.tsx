@@ -30,6 +30,7 @@ export default function Carousel({ images }: { images: any[] }) {
 
   const imageUrl = urlFor(images[index]).width(800).height(600).url()
 
+  // Variants
   const variants = {
     enter: (dir: number) => ({
       x: dir > 0 ? SLIDE_DIST : -SLIDE_DIST,
@@ -42,46 +43,34 @@ export default function Carousel({ images }: { images: any[] }) {
     exit: (dir: number) => ({
       x: dir > 0 ? -SLIDE_DIST : SLIDE_DIST,
       opacity: 0
-    })
+    }),
+    initialLoad: {
+      x: 0,
+      opacity: 1
+    }
   }
 
   return (
     <div className="flex flex-col items-center w-full h-full">
       <div className="relative w-full aspect-[4/3] rounded-lg mb-6 overflow-visible">
-
-        {/** 🚫 Initial Load — No Animation */}
-        {!hasInteracted && (
-          <div className="absolute inset-0">
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.div
+            key={index}
+            custom={direction}
+            variants={variants}
+            initial={hasInteracted ? 'enter' : 'initialLoad'}
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.35, ease: 'easeOut' }}
+            className="absolute inset-0 z-20"
+          >
             <WavyBorderImage
               imageUrl={imageUrl}
               shape={WavyShape.Rectangle}
-              minimumLoadingTimeMS={0}
+              disableLoadingEffect={hasInteracted}
             />
-          </div>
-        )}
-
-        {/** 🎬 After Interaction — Animate Transitions */}
-        {hasInteracted && (
-          <AnimatePresence mode="wait" custom={direction}>
-            <motion.div
-              key={index}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              className="absolute inset-0"
-            >
-              <WavyBorderImage
-                imageUrl={imageUrl}
-                shape={WavyShape.Rectangle}
-                minimumLoadingTimeMS={0}
-              />
-            </motion.div>
-          </AnimatePresence>
-        )}
-
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {images.length > 1 && (
