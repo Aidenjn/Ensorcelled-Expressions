@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { urlFor } from '@/lib/image'
 import { WavyShape } from '@/lib/types/WavyShapes'
 import WavyBorderImage from '@/components/WavyBorderImage/WavyBorderImage'
@@ -15,6 +15,14 @@ export default function Carousel({ images }: { images: any[] }) {
   const SLIDE_DIST = 30
 
   if (!images || images.length === 0) return null
+
+  // Preload images so that they appear immeadiately when flipping through the carousel
+  useEffect(() => {
+    images.forEach((img) => {
+      const preload = new Image();
+      preload.src = urlFor(img).width(800).height(600).url();
+    });
+  }, [images]);
 
   const next = () => {
     setHasInteracted(true)
