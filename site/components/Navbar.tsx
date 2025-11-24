@@ -17,7 +17,7 @@ const CATEGORIES = [
   { name: "Mugs", slug: "mugs", icon: CustomIcon.Mug },
   { name: "Pots", slug: "pots", icon: CustomIcon.Pot },
   { name: "Soap Dispensers", slug: "soap-dispensers", icon: CustomIcon.Dispenser },
-  { name: "Oddities", slug: "oddities", icon: CustomIcon.Confused },
+  { name: "Oddities", slug: "oddities", icon: CustomIcon.Oddity },
 ];
 
 const GALLERY_DROPDOWN = CATEGORIES.map(c => ({

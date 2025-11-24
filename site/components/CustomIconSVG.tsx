@@ -10,6 +10,13 @@ import DemonIcon from "@/public/custom_graphics/demon.svg";
 import MugIcon from "@/public/custom_graphics/mug.svg";
 import PotIcon from "@/public/custom_graphics/pot.svg";
 import DispenserIcon from "@/public/custom_graphics/dispenser.svg";
+import ContainerIcon from "@/public/custom_graphics/liddedcontainer.svg";
+import OddityIcon from "@/public/custom_graphics/oddity.svg";
+import GoblinIcon from "@/public/custom_graphics/goblin.svg";
+import GnomeIcon from "@/public/custom_graphics/gnome.svg";
+import BirdIcon from  "@/public/custom_graphics/bird.svg";
+import CatIcon from "@/public/custom_graphics/cat.svg";
+import TriclopesIcon from "@/public/custom_graphics/triclopes.svg";
 import { FC } from "react";
 import { CustomIcon } from "@/lib/types/CustomIcon";
 
@@ -27,8 +34,13 @@ const ICON_MAP: Record<CustomIcon, FC<React.SVGProps<SVGSVGElement>>> = {
   [CustomIcon.Mug]: MugIcon,
   [CustomIcon.Pot]: PotIcon,
   [CustomIcon.Dispenser]: DispenserIcon,
-  [CustomIcon.Goblin]: DemonIcon, // TODO: Make unique goblin svg
-  [CustomIcon.Oddity]: ConfusedIcon, // TODO: Make unique oddity svg
+  [CustomIcon.Container]: ContainerIcon,
+  [CustomIcon.Oddity]: OddityIcon,
+  [CustomIcon.Goblin]: GoblinIcon,
+  [CustomIcon.Gnome]: GnomeIcon,
+  [CustomIcon.Bird]: BirdIcon,
+  [CustomIcon.Triclopes]: TriclopesIcon,
+  [CustomIcon.Cat]: CatIcon,
 };
 
 const ICONS_ARRAY_FOR_RANDOM_SELECTION: CustomIcon[] = [
@@ -41,6 +53,11 @@ const ICONS_ARRAY_FOR_RANDOM_SELECTION: CustomIcon[] = [
   CustomIcon.Dog,
   CustomIcon.Confused,
   CustomIcon.Demon,
+  CustomIcon.Gnome,
+  CustomIcon.Bird,
+  CustomIcon.Triclopes,
+  CustomIcon.Cat,
+  CustomIcon.Goblin,
 ]
 
 // Props for generic icon component

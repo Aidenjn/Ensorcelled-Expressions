@@ -13,4 +13,9 @@ export enum CustomIcon {
   Pot = "Pot",
   Dispenser = "Dispenser",
   Oddity = "Oddity",
+  Container = "Container",
+  Cat = "Cat",
+  Gnome = "Gnome",
+  Bird = "Bird",
+  Triclopes = "Triclopes",
 }
