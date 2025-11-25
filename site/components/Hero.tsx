@@ -1,9 +1,8 @@
 'use client';
 
-import WavyBorderImage from "@/components/WavyBorderImage/WavyBorderImage";
-import { WavyShape } from "@/lib/types/WavyShapes";
 import { motion } from "framer-motion";
 import MagicText from "./MagicText";
+import Slideshow from "./Slideshow";
 import { CustomIcon } from "@/lib/types/CustomIcon";
 
 export default function Hero() {
@@ -24,16 +23,20 @@ export default function Hero() {
 
       {/* Wavy Border Hero Image */}
       <div className="w-full max-w-3xl aspect-[4/3] mb-6">
-        <WavyBorderImage
-          imageUrl="/images/demon_stance.jpg"
-          shape={WavyShape.Rectangle}
-          disableLoadingEffect={false}
-          minimumLoadingTimeMS={1500}
-          loadingIcon={CustomIcon.SpiralCutGaze}
+        <Slideshow
+          images={[
+            "/images/demon_stance.jpg",
+            "/images/clay_tilly_vs_real_tilly.jpeg",
+            "/images/goblin_mug_kiss.jpg",
+            "/images/holler_mugs.jpeg",
+            "/images/soap_dispenser_set.jpeg",
+            "/images/dip_face_mug.jpeg",
+            "/images/set_of_mugs.jpeg",
+          ]}
+          minimumLoadingTimeMS={ 1500 }
+          loadingIcon={ CustomIcon.SpiralCutGaze }
         />
       </div>
-
-      {/* Text Below */}
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

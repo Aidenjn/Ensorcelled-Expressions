@@ -16,7 +16,7 @@ export default function Home() {
 
       {/* Story Sections */}
       <StorySection
-          image_url = "/images/clay_tilly_vs_real_tilly.jpg"
+          image_url = "/images/greenware_mug.jpeg"
           heading="Emotionally Expressive"
           flow_left={false}
           icon={ CustomIcon.Dog }
@@ -26,10 +26,10 @@ export default function Home() {
         Through form, I endeavor to create expressions that invite answers to the question: <i>"What could one witness to make a face like that?"</i>
       </StorySection>
       <StorySection
-          image_url = "/images/goblin_mug_kiss.jpg"
+          image_url = "/images/aero_press_bev.jpeg"
           heading="Functional with Purpose"
           flow_left={true}
-          icon={ CustomIcon.Demon }
+          icon={ CustomIcon.Triclopes }
       >
         It is important to me that every piece I make serves at least one use in addition to being decorative.
         I find joy in seeing my work engaged with, so whether it be as versatile as a mug, or as specific as a sculpture designed to keep a pole upright, I ensure the art I make holds practical function.
