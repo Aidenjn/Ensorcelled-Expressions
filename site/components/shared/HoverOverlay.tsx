@@ -1,3 +1,5 @@
+"use client"
+
 import { motion } from 'framer-motion';
 
 interface HoverOverlayProps {
@@ -13,7 +15,7 @@ const HoverOverlay = ({ title }: HoverOverlayProps) => (
     transition={{ duration: 0.2 }}
     className="absolute inset-0 bg-background/85 flex items-center justify-center p-4 text-center"
   >
-    <h3 className="text-lg font-bold text-on_background_text_color px-4">{title}</h3>
+    <h3 className="text-lg font-bold text-background_text_color px-4">{ title }</h3>
   </motion.div>
 )
 

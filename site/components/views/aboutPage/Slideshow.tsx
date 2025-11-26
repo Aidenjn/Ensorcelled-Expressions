@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { WavyShape } from '@/lib/types/WavyShapes'
-import WavyBorderImage from '@/components/WavyBorderImage/WavyBorderImage'
+import WavyBorderImage from '@/components/shared/wavyBorderImage/WavyBorderImage'
 import { CustomIcon } from '@/lib/types/CustomIcon'
 
 export default function Slideshow({
@@ -70,7 +70,7 @@ export default function Slideshow({
 
   return (
     <div className="flex flex-col items-center w-full h-full">
-      <div className="relative w-full aspect-[4/3] rounded-lg overflow-visible">
+      <div className="relative w-full aspect-4/3 rounded-lg overflow-visible">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={index}

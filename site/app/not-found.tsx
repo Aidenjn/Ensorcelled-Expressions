@@ -1,5 +1,5 @@
 import NotFoundIcon from '@/public/custom_graphics/confused.svg';
-import PageHeading from '@/components/PageHeading';
+import PageHeading from '@/components/shared/PageHeading';
 
 export default function NotFound() {
   return (

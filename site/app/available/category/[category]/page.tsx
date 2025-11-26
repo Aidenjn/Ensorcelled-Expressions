@@ -1,7 +1,7 @@
 import { client } from '@/lib/sanity';
-import ArtGrid from '@/components/ArtGrid';
+import ArtGrid from "@/components/shared/ArtGrid";
 import { notFound } from 'next/navigation';
-import PageHeading from '@/components/PageHeading';
+import PageHeading from '@/components/shared/PageHeading';
 import { CustomIcon } from '@/lib/types/CustomIcon';
 
 const tagQuery = `

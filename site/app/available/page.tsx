@@ -1,8 +1,8 @@
 import { client } from '@/lib/sanity';
-import ArtGrid from '@/components/ArtGrid';
+import ArtGrid from "@/components/shared/ArtGrid";
 import Link from 'next/link';
 import ComingSoonIcon from '@/public/custom_graphics/starry_eyes.svg';
-import PageHeading from '@/components/PageHeading';
+import PageHeading from '@/components/shared/PageHeading';
 
 export default async function ForSaleGalleryPage() {
   return (

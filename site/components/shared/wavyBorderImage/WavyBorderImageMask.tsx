@@ -1,8 +1,7 @@
-// components/WavyBorderImageMask/WavyBorderImageMask.tsx
-import React, { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { getWavyShapeData } from "./utils/wavyShapes";
 import { WavyShape } from "@/lib/types/WavyShapes";
-import Icon from "@/components/CustomIconSVG";
+import Icon from "@/components/shared/CustomIconSVG";
 import { CustomIcon } from "@/lib/types/CustomIcon";
 
 interface Props {

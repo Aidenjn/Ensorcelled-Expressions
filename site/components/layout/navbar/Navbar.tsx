@@ -1,33 +1,32 @@
-'use client';
+"use client";
 
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-
 import NavItem from './NavItem';
-import CustomIconSVG from '@/components/CustomIconSVG';
+import CustomIconSVG from '@/components/shared/CustomIconSVG';
 import { CustomIcon } from '@/lib/types/CustomIcon';
 import GraspHand from '@/public/custom_graphics/grasphand.svg';
+import { ALL_CATEGORIES } from '@/lib/constants/categories';
+import { CategoryFamily } from '@/lib/types/Category';
 
 /* -------------------------------------------------------
  * Static Navigation Data
  * ----------------------------------------------------- */
 
-const CATEGORIES = [
-  { name: "Mugs", slug: "mugs", icon: CustomIcon.Mug },
-  { name: "Pots", slug: "pots", icon: CustomIcon.Pot },
-  { name: "Soap Dispensers", slug: "soap-dispensers", icon: CustomIcon.Dispenser },
-  { name: "Oddities", slug: "oddities", icon: CustomIcon.Oddity },
-];
+// Navbar will show navigable pages for only the functional form categories
+const CATEGORIES = ALL_CATEGORIES.filter((category) => (
+  category.categoryFamily === CategoryFamily.FunctionForm
+));
 
 const GALLERY_DROPDOWN = CATEGORIES.map(c => ({
-  name: c.name,
+  name: c.title,
   icon: c.icon,
   href: `/gallery/category/${c.slug}`,
 }));
 
 const AVAILABLE_ART_DROPDOWN = CATEGORIES.map(c => ({
-  name: c.name,
+  name: c.title,
   href: `/available/category/${c.slug}`,
 }));
 

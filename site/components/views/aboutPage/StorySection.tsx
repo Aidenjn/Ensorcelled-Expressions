@@ -1,9 +1,10 @@
-'use client';
+"use client";
+
 import { motion } from "framer-motion";
-import WavyBorderImage from "@/components/WavyBorderImage/WavyBorderImage";
+import WavyBorderImage from "@/components/shared/wavyBorderImage/WavyBorderImage";
 import { WavyShape } from "@/lib/types/WavyShapes";
 import { CustomIcon } from "@/lib/types/CustomIcon";
-import CustomIconSVG from "@/components/CustomIconSVG";
+import CustomIconSVG from "@/components/shared/CustomIconSVG";
 
 interface StorySectionProps {
   heading: string;

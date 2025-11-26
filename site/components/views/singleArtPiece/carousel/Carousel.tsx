@@ -1,13 +1,21 @@
-'use client'
+"use client"
 
 import { useState, useEffect } from 'react'
 import { urlFor } from '@/lib/image'
 import { WavyShape } from '@/lib/types/WavyShapes'
-import WavyBorderImage from '@/components/WavyBorderImage/WavyBorderImage'
-import CarouselButtons from '@/components/Carousel/CarouselButtons'
+import WavyBorderImage from '@/components/shared/wavyBorderImage/WavyBorderImage'
+import CarouselButtons from './CarouselButtons'
 import { motion, AnimatePresence } from 'framer-motion'
+import { SanityImage } from '@/lib/types/SanityTypes'
+import { CustomIcon } from '@/lib/types/CustomIcon'
 
-export default function Carousel({ images }: { images: any[] }) {
+export default function Carousel({
+  images,
+  loadingIcon,
+}: {
+  images: SanityImage[];
+  loadingIcon?: CustomIcon;
+}) {
   const [index, setIndex] = useState(0)
   const [direction, setDirection] = useState(1)
   const [hasInteracted, setHasInteracted] = useState(false)
@@ -60,7 +68,7 @@ export default function Carousel({ images }: { images: any[] }) {
 
   return (
     <div className="flex flex-col items-center w-full h-full">
-      <div className="relative w-full aspect-[4/3] rounded-lg mb-6 overflow-visible">
+      <div className="relative w-full aspect-4/3 rounded-lg mb-6 overflow-visible">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={index}
@@ -73,9 +81,10 @@ export default function Carousel({ images }: { images: any[] }) {
             className="absolute inset-0 z-20"
           >
             <WavyBorderImage
-              imageUrl={imageUrl}
-              shape={WavyShape.Rectangle}
-              disableLoadingEffect={hasInteracted}
+              imageUrl={ imageUrl }
+              shape={ WavyShape.Rectangle }
+              loadingIcon={ loadingIcon }
+              disableLoadingEffect={ hasInteracted }
             />
           </motion.div>
         </AnimatePresence>

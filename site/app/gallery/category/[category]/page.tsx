@@ -1,8 +1,9 @@
 import { client } from '@/lib/sanity';
-import ArtGrid from '@/components/ArtGrid';
-import PageHeading from '@/components/PageHeading';
+import ArtGrid from "@/components/shared/ArtGrid";
+import PageHeading from '@/components/shared/PageHeading';
 import { notFound } from 'next/navigation';
-import { CustomIcon } from '@/lib/types/CustomIcon';
+import { Category } from '@/lib/types/Category';
+import { getCategoryFromSlug } from '@/lib/utils/categories/getCategoryFromSlug';
 
 const tagQuery = `
   *[_type == "tag" && slug.current == $category][0]{
@@ -22,27 +23,6 @@ const artworksQuery = `
   } | order(dateCreated desc)
 `;
 
-function getIconFromCategory(category: string): CustomIcon | null {
-  console.log("🙏", category);
-  if (category === "soap-dispensers")
-    return CustomIcon.Dispenser;
-  else if (category === "pots")
-    return CustomIcon.Pot;
-  else if (category === "mugs")
-    return CustomIcon.Mug;
-  else if (category === "aliens")
-    return CustomIcon.Alien;
-  else if (category === "demons")
-    return CustomIcon.Demon;
-  else if (category === "dogs")
-    return CustomIcon.Dog;
-  else if (category === "oddities")
-    return CustomIcon.Oddity;
-  else if (category === "goblins")
-    return CustomIcon.Goblin;
-  return CustomIcon.Confused; 
-}
-
 export default async function GalleryCategoryPage({
   params,
 }: {
@@ -50,21 +30,22 @@ export default async function GalleryCategoryPage({
 }) {
   const { category } = await params;
 
-  // Fetch category/tag
-
+  // Fetch category from Sanity
   const categoryDoc = await client.fetch(tagQuery, { category });
-
   if (!categoryDoc) notFound();
 
-  // Fetch artworks for this tag
+  // Fetch artworks for this category
   const artworks = await client.fetch(artworksQuery, {
     tagId: categoryDoc._id,
   });
 
+  // Find local info for category
+  const categoryObject: Category | undefined = getCategoryFromSlug(category);
+
   return (
     <main>
-      { getIconFromCategory(category) ?
-        <PageHeading titleText={ categoryDoc.plural_title } icon={ getIconFromCategory(category)! } /> :
+      { categoryObject ?
+        <PageHeading titleText={ categoryObject.title } icon={ categoryObject.icon } /> :
         <PageHeading titleText={ categoryDoc.plural_title }/>
       }
       <ArtGrid artworks={artworks} />

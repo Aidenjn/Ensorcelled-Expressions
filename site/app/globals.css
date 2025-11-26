@@ -3,9 +3,8 @@
 :root {
   --background: black;
   --foreground: #FCF7ED;
-  --foreground_secondary: #8e82fe;
-  --on_foreground_text_color: black;
-  --on_background_text_color: #FCF7ED;
+  --foreground_text_color: black;
+  --background_text_color: #FCF7ED;
   --hover_text_color: #8e82fe;
   --hover_background_color: #8e82fe;
   --focus_text_color: black;
@@ -14,9 +13,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-foreground_secondary: var(--foreground_secondary);
-  --color-on_foreground_text_color: var(--on_foreground_text_color);
-  --color-on_background_text_color: var(--on_background_text_color);
+  --color-foreground_text_color: var(--foreground_text_color);
+  --color-background_text_color: var(--background_text_color);
   --color-hover_text_color: var(--hover_text_color);
   --color-hover_background_color: var(--hover_background_color);
 
@@ -30,14 +28,14 @@
   :root {
     --background: white;
     --foreground: black;
-    --on_foreground_text_color: white;
+    --foreground_text_color: white;
     --hover_text_color: rgb(191, 79, 232);
   }
 } */
 
 body {
   background: var(--foreground);
-  color: var(--on_foreground_text_color);
+  color: var(--foreground_text_color);
   font-family: var(--font-shantell-sans), Arial, Helvetica, sans-serif;
   min-width: 250px;
 }
@@ -51,12 +49,12 @@ body {
 
 nav {
   @apply
-    text-on_foreground_text_color;
+    text-foreground_text_color;
 }
 
 footer {
   @apply
-    text-on_foreground_text_color;
+    text-foreground_text_color;
 }
 
 p {
@@ -98,7 +96,7 @@ svg.splat {
 }
 
 .splat-path {
-  stroke: var(--on_background_text_color);
+  stroke: var(--background_text_color);
 }
 
 .splat-path-square {
@@ -112,19 +110,20 @@ svg.splat {
 }
 
 .svg-loading-icon {
-  stroke: var(--on_foreground_text_color);
+  stroke: var(--foreground_text_color);
   stroke-width: 60;
 }
 
 .carousel-button {
   @apply
-    pr-4
-    pl-4
-    pb-2
+    pr-6
+    pl-6
+    pb-3 
+    pt-1
     font-bold
     text-5xl
     rounded-full
-    border-6
+    border-2
     border-foreground
     bg-foreground
     text-background
@@ -134,14 +133,24 @@ svg.splat {
 
 .nav-link {
   @apply
-    stroke-on_foreground_text_color
+    stroke-background
+    hover:text-hover_text_color
+    hover:stroke-hover_text_color
+    duration-300 ease-in-out;
+}
+
+.nav-link-in-content {
+  @apply
+    underline
+    underline-offset-3
+    stroke-background_text_color
     hover:text-hover_text_color
     hover:stroke-hover_text_color
     duration-300 ease-in-out;
 }
 
 .nav-focus {
-  @apply text-on_foreground_text_color stroke-on_foreground_text_color;
+  @apply text-foreground_text_color stroke-foreground_text_color;
   text-decoration-line: underline;
   text-decoration-style: wavy;
   text-decoration-color: var(--text-focus_text_color);

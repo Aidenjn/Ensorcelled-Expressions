@@ -1,22 +1,25 @@
 import { client } from '@/lib/sanity';
-import { PortableText } from '@portabletext/react';
 import { notFound } from 'next/navigation';
-import Carousel from '@/components/Carousel/Carousel';
-import PageHeading from '@/components/PageHeading';
-import SaleStatus from '@/components/SaleStatus';
+import Carousel from '@/components/views/singleArtPiece/carousel/Carousel';
+import PageHeading from '@/components/shared/PageHeading';
+import { Artwork } from '@/lib/types/SanityTypes';
+import { getCategoriesFromTags } from '@/lib/utils/categories/getCategoriesFromTags';
+import { CustomIcon } from '@/lib/types/CustomIcon';
+import { Category, CategoryFamily } from '@/lib/types/Category';
 
 // GROQ query for one artwork
 const query = `
   *[_type == "artwork" && slug.current == $slug][0]{
     _id,
     title,
+    slug,
     description,
     images[],
     saleStatus,
     etsyUrl,
     tags[]->{
       _id,
-      name
+      slug,
     }
   }
 `;
@@ -30,37 +33,34 @@ export default async function ArtPage({
   const { slug } = await params
 
   // Now slug is available
-  const artwork = await client.fetch(query, { slug })
+  const artwork: Artwork = await client.fetch(query, { slug })
 
   if (!artwork) notFound();
 
+  // Use one of the aesthetic form icons for the loading image
+  const asthetic_artwork_categories: Category[] =
+    getCategoriesFromTags(artwork.tags)
+    .filter((category) => (category.categoryFamily === CategoryFamily.AstheticForm));
+
+  let loadingIcon: CustomIcon | undefined = undefined;
+  if (asthetic_artwork_categories.length > 0) loadingIcon = asthetic_artwork_categories[0].icon;
+
   return (
     <main>
-      <PageHeading titleText={ artwork.title } descriptionText={ artwork.description } />
+      <PageHeading
+        titleText={ artwork.title }
+        descriptionText={ artwork.description }
+        categories={ getCategoriesFromTags(artwork.tags) }
+      />
 
       <div className="max-w-5xl mx-auto pt-6 pr-6 pl-6 max-w-200">
-        {/* 🖼️ Image carousel */}
-        <Carousel images={ artwork.images } />
+        <Carousel
+          images={ artwork.images }
+          loadingIcon={ loadingIcon }
+        />
 
-        {/* 🏷️ Sale status
+        {/*
         <SaleStatus status={artwork.saleStatus} etsyUrl={artwork.etsyUrl} /> */}
-
-        {/* 🪄 Tags */}
-        {/* {artwork.tags?.length > 0 && (
-          <div className="mt-6">
-            <h3 className="font-medium text-gray-700 mb-2">Tags:</h3>
-            <div className="flex flex-wrap gap-2">
-              {artwork.tags.map((tag: any) => (
-                <span
-                  key={tag._id}
-                  className="bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-full"
-                >
-                  {tag.name}
-                </span>
-              ))}
-            </div>
-          </div>
-        )} */}
       </div>
     </main>
   )

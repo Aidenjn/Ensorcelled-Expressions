@@ -1,5 +1,3 @@
-'use client';
-
 import GraspHand from '@/public/custom_graphics/grasphand.svg'
 import { FaInstagram, FaFacebook, FaEtsy } from "react-icons/fa";
 

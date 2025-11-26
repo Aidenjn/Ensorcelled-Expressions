@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import CustomIconSVG from "@/components/CustomIconSVG";
+import CustomIconSVG from "@/components/shared/CustomIconSVG";
 import { CustomIcon } from "@/lib/types/CustomIcon";
 
 interface DropdownItem {
@@ -160,7 +160,7 @@ function DesktopNavItem({
               exit={{ opacity: 0, scaleY: 0 }}
               style={{ originY: 0 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full -left-2 pt-1 pb-3 bg-foreground shadow-lg rounded-md overflow-hidden text-on_foreground_text_color"
+              className="absolute top-full -left-2 pt-1 pb-3 bg-foreground shadow-lg rounded-md overflow-hidden text-foreground_text_color"
             >
               {dropdown.map((item) => (
                 <li key={item.href}>
