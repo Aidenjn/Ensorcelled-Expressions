@@ -1,5 +1,8 @@
+"use client"
+
 import CustomIconSVG from "@/components/shared/CustomIconSVG";
 import { Category, CategoryFamily } from "@/lib/types/Category";
+import { motion } from "motion/react";
 import Link from "next/link";
 
 // Sort categories to have aethetic categories first and functional categories last.
@@ -24,9 +27,15 @@ export default function CategoryIconLinks({
     <div className="flex justify-center gap-5">{
       categories.map((category: Category) => {
         return (
-          <Link key={ category.slug } href={ `/gallery/category/${ category.slug }`}> 
-            <CustomIconSVG icon={ category.icon } className="w-14 h-14 nav-link-in-content" />
-          </Link>
+          <motion.button
+            whileTap={{ scale: 0.80 }}
+            transition={{ type: "spring", stiffness: 500, damping: 20 }}
+            key={ category.slug }
+          >
+            <Link href={ `/gallery/category/${ category.slug }`}>
+              <CustomIconSVG icon={ category.icon } className="w-14 h-14 nav-link-in-content" />
+            </Link>
+          </motion.button>
         );
       })
     }</div>
