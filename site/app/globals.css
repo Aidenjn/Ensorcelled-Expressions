@@ -23,21 +23,13 @@
   --font-mono: var(--font-geist-mono);
   --font-shantell: var(--font-shantell-sans);
 }
-/* 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: white;
-    --foreground: black;
-    --foreground_text_color: white;
-    --hover_text_color: rgb(191, 79, 232);
-  }
-} */
 
 body {
-  background: var(--foreground);
-  color: var(--foreground_text_color);
   font-family: var(--font-shantell-sans), Arial, Helvetica, sans-serif;
-  min-width: 250px;
+  @apply
+    bg-foreground
+    text-foreground_text_color
+    min-w-250;
 }
 
 .page-main {
@@ -71,8 +63,8 @@ a {
 }
 
 .grasphand-decor-bar {
-  margin-top: -1px;
   @apply
+    -mt-px
     relative
     -z-10
     mr-1
@@ -82,9 +74,10 @@ a {
 }
 
 .svg-grasp-hand-icon {
-  stroke: var(--background);
-  fill: var(--foreground);
-  stroke-width: 39;
+  @apply
+    stroke-background
+    fill-foreground
+    stroke-39;
 }
 
 svg.splat {
@@ -96,22 +89,26 @@ svg.splat {
 }
 
 .splat-path {
-  stroke: var(--background_text_color);
+  @apply
+    stroke-background_text_color;
 }
 
 .splat-path-square {
-  scale: 0.097;
-  stroke-width: 6;
+  @apply
+    stroke-6
+    scale-[0.097];
 }
 
 .splat-path-rectangle {
-  scale: 0.1;
-  stroke-width: 18;
+  @apply
+    scale-10
+    stroke-18;
 }
 
 .svg-loading-icon {
-  stroke: var(--foreground_text_color);
-  stroke-width: 60;
+  @apply
+    stroke-foreground_text_color
+    stroke-60;
 }
 
 .carousel-button {
@@ -150,18 +147,11 @@ svg.splat {
 }
 
 .nav-focus {
-  @apply text-foreground_text_color stroke-foreground_text_color;
-  text-decoration-line: underline;
-  text-decoration-style: wavy;
-  text-decoration-color: var(--text-focus_text_color);
-  text-underline-offset: 5px;
-}
-
-@keyframes spin-slow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.animate-spin-slow {
-  animation: spin-slow 1.5s linear infinite;
+  @apply
+    text-foreground_text_color
+    stroke-foreground_text_color
+    underline
+    decoration-wavy
+    decoration-focus_text_color
+    underline-offset-5;
 }
