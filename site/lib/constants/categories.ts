@@ -88,7 +88,7 @@ export const ALL_CATEGORIES: Category[] = [
     categoryFamily: CategoryFamily.AstheticForm,
   },
   {
-    title: "Alien",
+    title: "Aliens",
     descriptor: "alien",
     slug: "aliens",
     icon: CustomIcon.Alien,
