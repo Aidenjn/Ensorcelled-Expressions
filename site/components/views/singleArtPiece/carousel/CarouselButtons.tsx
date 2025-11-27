@@ -21,7 +21,11 @@ export default function CarouselButtons({
       </motion.button>
 
       <motion.button
-        whileTap={{ scale: 0.80 }}
+        whileTap={{
+          scale: 0.80,
+          color: "var(--color-hover_background_color)",
+          borderColor: "var(--color-hover_background_color)",
+         }}
         transition={{ type: "spring", stiffness: 500, damping: 20 }}
         onClick={onNext}
         className="carousel-button"

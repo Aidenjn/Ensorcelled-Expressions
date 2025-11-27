@@ -28,12 +28,16 @@ export default function CategoryIconLinks({
       categories.map((category: Category) => {
         return (
           <motion.button
-            whileTap={{ scale: 0.80 }}
+            className="stroke-background_text_color"
+            whileTap={{
+              scale: 0.80,
+              stroke: "var(--color-hover_background_color)",
+            }}
             transition={{ type: "spring", stiffness: 500, damping: 20 }}
             key={ category.slug }
           >
             <Link href={ `/gallery/category/${ category.slug }`}>
-              <CustomIconSVG icon={ category.icon } className="w-14 h-14 nav-link-in-content" />
+              <CustomIconSVG icon={ category.icon } className="w-14 h-14 nav-link-in-content" /> 
             </Link>
           </motion.button>
         );
