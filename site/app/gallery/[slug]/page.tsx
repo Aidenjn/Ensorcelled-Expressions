@@ -53,7 +53,7 @@ export default async function ArtPage({
         categories={ getCategoriesFromTags(artwork.tags) }
       />
 
-      <div className="max-w-5xl mx-auto pt-6 pr-6 pl-6 max-w-200">
+      <div className="mx-auto pt-6 max-w-200">
         <Carousel
           images={ artwork.images }
           loadingIcon={ loadingIcon }

@@ -7,7 +7,7 @@ import { CustomIcon } from "@/lib/types/CustomIcon";
 
 export default function Hero() {
   return (
-    <section className="flex flex-col items-center justify-center pb-10 px-6 bg-background text-white">
+    <section className="flex flex-col items-center justify-center pb-10 bg-background text-white">
       {/* Intro Text Above */}
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
@@ -22,7 +22,7 @@ export default function Hero() {
       </motion.h1>
 
       {/* Wavy Border Hero Image */}
-      <div className="w-full max-w-3xl aspect-[4/3] mb-6">
+      <div className="w-full max-w-3xl aspect-4/3 mb-6">
         <Slideshow
           images={[
             "/images/demon_stance.jpg",

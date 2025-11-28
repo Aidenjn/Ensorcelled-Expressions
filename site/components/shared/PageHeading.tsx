@@ -35,7 +35,7 @@ export default function PageHeading({
 
   return (
     <motion.div
-      className="max-w-5xl mx-auto px-6 text-center"
+      className="max-w-5xl mx-auto px-1 text-center"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -50,7 +50,7 @@ export default function PageHeading({
             className="w-10 h-10 sm:w-15 sm:h-15 stroke-foreground"
           />
         )}
-        <h1 className="text-3xl font-semibold text-foreground">{titleText}</h1>
+        <h1 className="text-3xl font-semibold text-foreground max-w-100 sm:max-w-full">{titleText}</h1>
       </motion.div>
 
       {/* Show category icons underneath the title */}

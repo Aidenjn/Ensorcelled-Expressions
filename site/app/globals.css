@@ -69,8 +69,7 @@ a {
     -z-10
     mr-1
     ml-1
-    pointer-events-none
-    ;
+    pointer-events-none;
 }
 
 .svg-grasp-hand-icon {
@@ -96,7 +95,13 @@ svg.splat {
 .splat-path-square {
   @apply
     stroke-6
-    scale-[0.097];
+    w-full
+    h-full
+    -translate-y-0.5
+    -translate-x-0.5
+    scale-y-[0.098]
+    scale-x-[0.104];
+;
 }
 
 .splat-path-rectangle {

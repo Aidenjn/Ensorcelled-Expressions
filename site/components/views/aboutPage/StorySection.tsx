@@ -24,7 +24,7 @@ export default function StorySection({
   
   return (
     <section
-      className={`flex flex-col md:flex-row items-center my-20 px-6 md:px-16 ${flow_left ? '' : 'md:flex-row-reverse'}`}
+      className={`flex flex-col md:flex-row items-center my-20 ${flow_left ? '' : 'md:flex-row-reverse'}`}
     >
       <motion.div
         initial={{ opacity: 0, x: flow_left ? -50 : 50 }}
@@ -33,7 +33,7 @@ export default function StorySection({
         viewport={{ once: true }}
         className="md:w-1/2 mb-8 md:mb-0 w-full flex justify-center"
       >
-        <div className="relative w-full aspect-square lg:max-w-3/4">
+        <div className="relative w-full aspect-square sm:max-w-5/6 lg:max-w-3/5">
           <WavyBorderImage imageUrl={ image_url } shape={ WavyShape.Square } disableLoadingEffect={false} minimumLoadingTimeMS={1000} loadingIcon={ icon }/>
         </div>
       </motion.div>
