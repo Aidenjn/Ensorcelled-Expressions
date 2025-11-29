@@ -5,7 +5,7 @@ import { WavyShape } from "@/lib/types/WavyShapes";
 import { CustomIcon } from "@/lib/types/CustomIcon";
 
 interface WavyBorderImageProps extends HTMLAttributes<HTMLDivElement> {
-  imageUrl: string | null;
+  imageUrl: string | undefined;
   shape?: WavyShape;
   disableLoadingEffect?: boolean;
   minimumLoadingTimeMS?: number;
@@ -37,15 +37,15 @@ const WavyBorderImage =
       {...rest}
     >
       <WavyBorderImageMask
-        imageUrl={imageUrl}
-        shape={shape}
-        alt={alt}
-        disableLoadingEffect={disableLoadingEffect}
-        minimumLoadingTimeMS={minimumLoadingTimeMS}
-        loadingIcon={loadingIcon}
+        imageUrl={ imageUrl }
+        shape={ shape }
+        alt={ alt }
+        disableLoadingEffect={ disableLoadingEffect }
+        minimumLoadingTimeMS={ minimumLoadingTimeMS }
+        loadingIcon={ loadingIcon }
       />
 
-      <WavyBorderImageBorder shape={shape} />
+      <WavyBorderImageBorder shape={ shape } />
     </div>
   );
 };

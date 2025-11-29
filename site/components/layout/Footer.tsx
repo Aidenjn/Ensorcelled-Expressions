@@ -1,5 +1,5 @@
 import GraspHand from '@/public/custom_graphics/grasphand.svg'
-import { FaInstagram, FaFacebook, FaEtsy } from "react-icons/fa";
+import { FaInstagram, FaFacebook } from "react-icons/fa";
 
 export default function Footer() {
   const links = [

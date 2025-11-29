@@ -5,7 +5,7 @@ import Icon from "@/components/shared/CustomIconSVG";
 import { CustomIcon } from "@/lib/types/CustomIcon";
 
 interface Props {
-  imageUrl: string | null;
+  imageUrl: string | undefined;
   shape?: WavyShape;
   disableLoadingEffect?: boolean;
   minimumLoadingTimeMS?: number;

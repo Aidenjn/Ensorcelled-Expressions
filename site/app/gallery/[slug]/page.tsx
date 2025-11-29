@@ -43,14 +43,15 @@ export default async function ArtPage({
     .filter((category) => (category.categoryFamily === CategoryFamily.AstheticForm));
 
   let loadingIcon: CustomIcon | undefined = undefined;
-  if (asthetic_artwork_categories.length > 0) loadingIcon = asthetic_artwork_categories[0].icon;
+  if (asthetic_artwork_categories.length > 0) loadingIcon = asthetic_artwork_categories[0]?.icon;
 
   return (
     <main>
       <PageHeading
         titleText={ artwork.title }
-        descriptionText={ artwork.description }
         categories={ getCategoriesFromTags(artwork.tags) }
+        // Only include descriptionText as a prop if it's defined
+        { ...(artwork.description && { descriptionText: artwork.description }) }
       />
 
       <div className="mx-auto pt-6 max-w-200">

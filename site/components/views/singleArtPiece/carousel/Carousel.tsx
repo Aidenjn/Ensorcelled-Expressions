@@ -14,7 +14,7 @@ export default function Carousel({
   loadingIcon,
 }: {
   images: SanityImage[];
-  loadingIcon?: CustomIcon;
+  loadingIcon?: CustomIcon | undefined;
 }) {
   const [index, setIndex] = useState(0)
   const [direction, setDirection] = useState(1)

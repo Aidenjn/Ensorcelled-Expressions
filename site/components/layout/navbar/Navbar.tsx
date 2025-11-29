@@ -22,10 +22,10 @@ export default function Navbar() {
     href: `/gallery/category/${c.slug}`,
   }));
 
-  const AVAILABLE_ART_DROPDOWN = CATEGORIES.map(c => ({
-    name: c.title,
-    href: `/available/category/${c.slug}`,
-  }));
+  // const AVAILABLE_ART_DROPDOWN = CATEGORIES.map(c => ({
+  //   name: c.title,
+  //   href: `/available/category/${c.slug}`,
+  // }));
 
   const NAV_LINKS = [
     {

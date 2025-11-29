@@ -20,6 +20,9 @@ import TriclopesIcon from "@/public/custom_graphics/triclopes.svg";
 import { FC } from "react";
 import { CustomIcon } from "@/lib/types/CustomIcon";
 
+// Will choose this as last resort
+const DEFAULT_ICON: FC<React.SVGProps<SVGSVGElement>> = SpiralCutGazeIcon;
+
 // Map enum to SVG components
 const ICON_MAP: Record<CustomIcon, FC<React.SVGProps<SVGSVGElement>>> = {
   [CustomIcon.SpiralCutGaze]: SpiralCutGazeIcon,
@@ -80,12 +83,12 @@ const CustomIconSVG: FC<IconProps> = ({
   } else if (seed) {
     // Deterministic random icon based on seed
     const hash = [...seed].reduce((acc, c) => acc + c.charCodeAt(0), 0);
-    const randomType = ICONS_ARRAY_FOR_RANDOM_SELECTION[hash % ICONS_ARRAY_FOR_RANDOM_SELECTION.length];
-    IconComponent = ICON_MAP[randomType];
+    const randomType: CustomIcon | undefined = ICONS_ARRAY_FOR_RANDOM_SELECTION[hash % ICONS_ARRAY_FOR_RANDOM_SELECTION.length];
+    IconComponent = randomType ? ICON_MAP[randomType] : DEFAULT_ICON;
   } else {
     // Fully random icon
-    const randomType = ICONS_ARRAY_FOR_RANDOM_SELECTION[Math.floor(Math.random() * ICONS_ARRAY_FOR_RANDOM_SELECTION.length)];
-    IconComponent = ICON_MAP[randomType];
+    const randomType: CustomIcon | undefined = ICONS_ARRAY_FOR_RANDOM_SELECTION[Math.floor(Math.random() * ICONS_ARRAY_FOR_RANDOM_SELECTION.length)];
+    IconComponent = randomType ? ICON_MAP[randomType] : DEFAULT_ICON;
   }
 
   return <IconComponent className={className} />;

@@ -9,10 +9,12 @@ import HoverOverlay from '@/components/shared/HoverOverlay';
 import React from 'react';
 
 export default function ArtworkCard({ artwork }: { artwork: Artwork }) {
-  const imageUrl = React.useMemo(() => {
+  const imageUrlFetch: string | null = (React.useMemo(() => {
     const img = artwork.images?.[0];
     return img ? urlFor(img).width(350).height(350).url() : null;
-  }, [artwork.images]);
+  }, [artwork.images]));
+
+  const imageUrl: string | undefined = imageUrlFetch ? imageUrlFetch : undefined;
 
   return (
     <motion.div
