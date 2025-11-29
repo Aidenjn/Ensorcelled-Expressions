@@ -20,7 +20,7 @@ export default function Home() {
         I strive to make my art emotionally expressive.
         I do this by twisting (often inhuman) faces into my work.
         Through form I create expressions that invite answers to the question:
-        <i>"What could one witness to make a face like that?"</i>
+        <i> "What could one witness to make a face like that?"</i>
       </StorySection>
       <StorySection
           image_url = "/images/aero_press_bev.jpeg"
