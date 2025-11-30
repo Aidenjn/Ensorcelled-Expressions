@@ -1,13 +1,13 @@
-"use client"
+'use client';
 
-import { useState, useEffect } from 'react'
-import { urlFor } from '@/lib/image'
-import { WavyShape } from '@/lib/types/WavyShapes'
-import WavyBorderImage from '@/components/shared/wavyBorderImage/WavyBorderImage'
-import CarouselButtons from './CarouselButtons'
-import { motion, AnimatePresence } from 'framer-motion'
-import { SanityImage } from '@/lib/types/SanityTypes'
-import { CustomIcon } from '@/lib/types/CustomIcon'
+import { useState, useEffect } from 'react';
+import { urlFor } from '@/lib/image';
+import { WavyShape } from '@/lib/types/WavyShapes';
+import WavyBorderImage from '@/components/shared/wavyBorderImage/WavyBorderImage';
+import CarouselButtons from './CarouselButtons';
+import { motion, AnimatePresence } from 'framer-motion';
+import { SanityImage } from '@/lib/types/SanityTypes';
+import { CustomIcon } from '@/lib/types/CustomIcon';
 
 export default function Carousel({
   images,
@@ -16,13 +16,13 @@ export default function Carousel({
   images: SanityImage[];
   loadingIcon?: CustomIcon | undefined;
 }) {
-  const [index, setIndex] = useState(0)
-  const [direction, setDirection] = useState(1)
-  const [hasInteracted, setHasInteracted] = useState(false)
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [hasInteracted, setHasInteracted] = useState(false);
 
-  const SLIDE_DIST = 30
+  const SLIDE_DIST = 30;
 
-  if (!images || images.length === 0) return null
+  if (!images || images.length === 0) return null;
 
   // Preload images so that they appear immeadiately when flipping through the carousel
   useEffect(() => {
@@ -33,38 +33,38 @@ export default function Carousel({
   }, [images]);
 
   const next = () => {
-    setHasInteracted(true)
-    setDirection(1)
-    setIndex((i) => (i + 1) % images.length)
-  }
+    setHasInteracted(true);
+    setDirection(1);
+    setIndex((i) => (i + 1) % images.length);
+  };
 
   const prev = () => {
-    setHasInteracted(true)
-    setDirection(-1)
-    setIndex((i) => (i - 1 + images.length) % images.length)
-  }
+    setHasInteracted(true);
+    setDirection(-1);
+    setIndex((i) => (i - 1 + images.length) % images.length);
+  };
 
-  const imageUrl = urlFor(images[index]).width(800).height(600).url()
+  const imageUrl = urlFor(images[index]).width(800).height(600).url();
 
   // Variants
   const variants = {
     enter: (dir: number) => ({
       x: dir > 0 ? SLIDE_DIST : -SLIDE_DIST,
-      opacity: 0
+      opacity: 0,
     }),
     center: {
       x: 0,
-      opacity: 1
+      opacity: 1,
     },
     exit: (dir: number) => ({
       x: dir > 0 ? -SLIDE_DIST : SLIDE_DIST,
-      opacity: 0
+      opacity: 0,
     }),
     initialLoad: {
       x: 0,
-      opacity: 1
-    }
-  }
+      opacity: 1,
+    },
+  };
 
   return (
     <div className="flex flex-col items-center w-full h-full">
@@ -81,18 +81,16 @@ export default function Carousel({
             className="absolute inset-0 z-20"
           >
             <WavyBorderImage
-              imageUrl={ imageUrl }
-              shape={ WavyShape.Rectangle }
-              loadingIcon={ loadingIcon }
-              disableLoadingEffect={ hasInteracted }
+              imageUrl={imageUrl}
+              shape={WavyShape.Rectangle}
+              loadingIcon={loadingIcon}
+              disableLoadingEffect={hasInteracted}
             />
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {images.length > 1 && (
-        <CarouselButtons onPrev={prev} onNext={next} />
-      )}
+      {images.length > 1 && <CarouselButtons onPrev={prev} onNext={next} />}
     </div>
-  )
+  );
 }

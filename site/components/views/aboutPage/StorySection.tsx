@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import WavyBorderImage from "@/components/shared/wavyBorderImage/WavyBorderImage";
-import { WavyShape } from "@/lib/types/WavyShapes";
-import { CustomIcon } from "@/lib/types/CustomIcon";
-import CustomIconSVG from "@/components/shared/CustomIconSVG";
+import { motion } from 'framer-motion';
+import WavyBorderImage from '@/components/shared/wavyBorderImage/WavyBorderImage';
+import { WavyShape } from '@/lib/types/WavyShapes';
+import { CustomIcon } from '@/lib/types/CustomIcon';
+import CustomIconSVG from '@/components/shared/CustomIconSVG';
 
 interface StorySectionProps {
   heading: string;
@@ -21,7 +21,6 @@ export default function StorySection({
   flow_left = false,
   icon = CustomIcon.SpiralCutGaze,
 }: StorySectionProps) {
-  
   return (
     <section
       className={`flex flex-col md:flex-row items-center my-20 ${flow_left ? '' : 'md:flex-row-reverse'}`}
@@ -34,7 +33,13 @@ export default function StorySection({
         className="md:w-1/2 mb-8 md:mb-0 w-full flex justify-center"
       >
         <div className="relative w-full aspect-square sm:max-w-5/6 lg:max-w-3/5">
-          <WavyBorderImage imageUrl={ image_url } shape={ WavyShape.Square } disableLoadingEffect={false} minimumLoadingTimeMS={1000} loadingIcon={ icon }/>
+          <WavyBorderImage
+            imageUrl={image_url}
+            shape={WavyShape.Square}
+            disableLoadingEffect={false}
+            minimumLoadingTimeMS={1000}
+            loadingIcon={icon}
+          />
         </div>
       </motion.div>
 
@@ -47,8 +52,14 @@ export default function StorySection({
       >
         {/* <h2 className="text-3xl font-semibold mb-4"><LogoIcon className="w-10 h-10 mr-5 stroke-white inline-block mr-5" />{ storySection.heading }</h2> */}
 
-        <h2 className="text-3xl font-semibold mb-4"><CustomIconSVG icon={ icon } className="w-10 h-10 sm:w-15 sm:h-15 stroke-white inline-block mr-4 sm:mr-5" />{ heading }</h2>
-        <p className="text-lg leading-relaxed">{ children}</p>
+        <h2 className="text-3xl font-semibold mb-4">
+          <CustomIconSVG
+            icon={icon}
+            className="w-10 h-10 sm:w-15 sm:h-15 stroke-white inline-block mr-4 sm:mr-5"
+          />
+          {heading}
+        </h2>
+        <p className="text-lg leading-relaxed">{children}</p>
       </motion.div>
     </section>
   );

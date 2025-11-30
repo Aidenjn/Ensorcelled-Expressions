@@ -1,16 +1,14 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+import { motion } from 'framer-motion';
+import { useEffect, useState, useRef } from 'react';
 
 interface MagicWordProps {
   children: string;
 }
 
 export default function MagicText({ children }: MagicWordProps) {
-  const [sparkles, setSparkles] = useState<
-    Array<{ id: number; x: number; y: number }>
-  >([]);
+  const [sparkles, setSparkles] = useState<Array<{ id: number; x: number; y: number }>>([]);
   const wordRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -34,17 +32,17 @@ export default function MagicText({ children }: MagicWordProps) {
   }, []);
 
   return (
-    <div style={{ position: "relative", display: "inline-block" }} ref={wordRef}>
+    <div style={{ position: 'relative', display: 'inline-block' }} ref={wordRef}>
       {/* The Word */}
       <motion.h1
         style={{
-          display: "flex",
-          color: "#8e82fe",
-          textAlign: "center",
-          position: "relative",
+          display: 'flex',
+          color: '#8e82fe',
+          textAlign: 'center',
+          position: 'relative',
         }}
       >
-        {children.split("").map((letter, i) => (
+        {children.split('').map((letter, i) => (
           <motion.span
             key={i}
             variants={{
@@ -53,10 +51,10 @@ export default function MagicText({ children }: MagicWordProps) {
             }}
             initial="hidden"
             animate="visible"
-            transition={{ delay: i * 0.1, type: "spring", stiffness: 300 }}
+            transition={{ delay: i * 0.1, type: 'spring', stiffness: 300 }}
             style={{
-              marginRight: "2px",
-              textShadow: "0 0 10px black, 0 0 20px black, 0 0 10px #fff",
+              marginRight: '2px',
+              textShadow: '0 0 10px black, 0 0 20px black, 0 0 10px #fff',
             }}
           >
             {letter}
@@ -69,11 +67,11 @@ export default function MagicText({ children }: MagicWordProps) {
         <motion.div
           key={s.id}
           style={{
-            position: "absolute",
-            width: "6px",
-            height: "6px",
-            borderRadius: "50%",
-            background: "#fff",
+            position: 'absolute',
+            width: '6px',
+            height: '6px',
+            borderRadius: '50%',
+            background: '#fff',
             top: s.y,
             left: s.x,
           }}

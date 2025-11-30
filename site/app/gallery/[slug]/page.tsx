@@ -24,23 +24,19 @@ const query = `
   }
 `;
 
-export default async function ArtPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>
-}) {
+export default async function ArtPage({ params }: { params: Promise<{ slug: string }> }) {
   // Unwrap the Promise
-  const { slug } = await params
+  const { slug } = await params;
 
   // Now slug is available
-  const artwork: Artwork = await client.fetch(query, { slug })
+  const artwork: Artwork = await client.fetch(query, { slug });
 
   if (!artwork) notFound();
 
   // Use one of the aesthetic form icons for the loading image
-  const asthetic_artwork_categories: Category[] =
-    getCategoriesFromTags(artwork.tags)
-    .filter((category) => (category.categoryFamily === CategoryFamily.AstheticForm));
+  const asthetic_artwork_categories: Category[] = getCategoriesFromTags(artwork.tags).filter(
+    (category) => category.categoryFamily === CategoryFamily.AstheticForm,
+  );
 
   let loadingIcon: CustomIcon | undefined = undefined;
   if (asthetic_artwork_categories.length > 0) loadingIcon = asthetic_artwork_categories[0]?.icon;
@@ -48,21 +44,18 @@ export default async function ArtPage({
   return (
     <main>
       <PageHeading
-        titleText={ artwork.title }
-        categories={ getCategoriesFromTags(artwork.tags) }
+        titleText={artwork.title}
+        categories={getCategoriesFromTags(artwork.tags)}
         // Only include descriptionText as a prop if it's defined
-        { ...(artwork.description && { descriptionText: artwork.description }) }
+        {...(artwork.description && { descriptionText: artwork.description })}
       />
 
       <div className="mx-auto pt-6 max-w-200">
-        <Carousel
-          images={ artwork.images }
-          loadingIcon={ loadingIcon }
-        />
+        <Carousel images={artwork.images} loadingIcon={loadingIcon} />
 
         {/*
         <SaleStatus status={artwork.saleStatus} etsyUrl={artwork.etsyUrl} /> */}
       </div>
     </main>
-  )
+  );
 }

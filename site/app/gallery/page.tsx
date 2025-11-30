@@ -1,5 +1,5 @@
 import { client } from '@/lib/sanity';
-import ArtGrid from "@/components/shared/ArtGrid";
+import ArtGrid from '@/components/shared/ArtGrid';
 import PageHeading from '@/components/shared/PageHeading';
 import { CustomIcon } from '@/lib/types/CustomIcon';
 
@@ -8,8 +8,8 @@ export default async function GalleryPage() {
 
   return (
     <div>
-      <PageHeading titleText="Gallery" icon={ CustomIcon.ExcitedGlace }/>
-      <ArtGrid artworks={ artworks }/>
+      <PageHeading titleText="Gallery" icon={CustomIcon.ExcitedGlace} />
+      <ArtGrid artworks={artworks} />
     </div>
   );
 }

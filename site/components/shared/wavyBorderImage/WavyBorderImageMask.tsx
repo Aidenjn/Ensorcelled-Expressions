@@ -1,8 +1,8 @@
-import { useState, useEffect, useMemo } from "react";
-import { getWavyShapeData } from "./utils/wavyShapes";
-import { WavyShape } from "@/lib/types/WavyShapes";
-import Icon from "@/components/shared/CustomIconSVG";
-import { CustomIcon } from "@/lib/types/CustomIcon";
+import { useState, useEffect, useMemo } from 'react';
+import { getWavyShapeData } from './utils/wavyShapes';
+import { WavyShape } from '@/lib/types/WavyShapes';
+import Icon from '@/components/shared/CustomIconSVG';
+import { CustomIcon } from '@/lib/types/CustomIcon';
 
 interface Props {
   imageUrl: string | undefined;
@@ -18,7 +18,7 @@ export default function WavyBorderImageMask({
   shape = WavyShape.Square,
   disableLoadingEffect = false,
   minimumLoadingTimeMS = 400,
-  alt = "",
+  alt = '',
   loadingIcon,
 }: Props) {
   const [loaded, setLoaded] = useState(false);
@@ -28,8 +28,8 @@ export default function WavyBorderImageMask({
 
   // --- Stable clip ID to avoid SVG mismatches on client navigation ---
   const clipId = useMemo(() => {
-    if (!imageUrl) return "clip-none";
-    return "clip-" + imageUrl.replace(/[^a-zA-Z0-9]/g, "");
+    if (!imageUrl) return 'clip-none';
+    return 'clip-' + imageUrl.replace(/[^a-zA-Z0-9]/g, '');
   }, [imageUrl]);
 
   // --- Reset loading state every time imageUrl changes ---
@@ -68,24 +68,17 @@ export default function WavyBorderImageMask({
       </defs>
 
       {/* Background fill */}
-      <rect
-        width="100%"
-        height="100%"
-        clipPath={`url(#${clipId})`}
-        className="fill-foreground"
-      />
+      <rect width="100%" height="100%" clipPath={`url(#${clipId})`} className="fill-foreground" />
 
       {/* Loading icon */}
       {!disableLoadingEffect && (
         <g
-          transform={
-            shape === WavyShape.Square ? "translate(10, 10) scale(0.8)" : ""
-          }
+          transform={shape === WavyShape.Square ? 'translate(10, 10) scale(0.8)' : ''}
           style={{
             opacity: showImage ? 0 : 1,
-            transition: "opacity 0.6s ease",
-            pointerEvents: "none",
-            shapeRendering: "geometricPrecision",
+            transition: 'opacity 0.6s ease',
+            pointerEvents: 'none',
+            shapeRendering: 'geometricPrecision',
           }}
         >
           <Icon
@@ -106,10 +99,8 @@ export default function WavyBorderImageMask({
           preserveAspectRatio="xMidYMid slice"
           style={{
             opacity: showImage ? 1 : 0,
-            filter: disableLoadingEffect || showImage ? "none" : "blur(15px)",
-            transition: disableLoadingEffect
-              ? "none"
-              : "opacity 0.8s ease, filter 0.6s ease",
+            filter: disableLoadingEffect || showImage ? 'none' : 'blur(15px)',
+            transition: disableLoadingEffect ? 'none' : 'opacity 0.8s ease, filter 0.6s ease',
           }}
         />
       )}

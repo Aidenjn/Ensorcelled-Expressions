@@ -1,5 +1,5 @@
 import { client } from '@/lib/sanity';
-import ArtGrid from "@/components/shared/ArtGrid";
+import ArtGrid from '@/components/shared/ArtGrid';
 import { notFound } from 'next/navigation';
 import PageHeading from '@/components/shared/PageHeading';
 import { CustomIcon } from '@/lib/types/CustomIcon';
@@ -24,16 +24,19 @@ const artworksQuery = `
 
 function getIconFromCategory(tag: string): CustomIcon | null {
   switch (tag) {
-    case "soap-dispenser": return CustomIcon.Dispenser;
-    case "soap-dispenser": return CustomIcon.Dispenser;
-    default: return null 
+    case 'soap-dispenser':
+      return CustomIcon.Dispenser;
+    case 'soap-dispenser':
+      return CustomIcon.Dispenser;
+    default:
+      return null;
   }
 }
 
 export default async function AvailableCategoryPage({
   params,
 }: {
-  params: Promise<{ category: string }>
+  params: Promise<{ category: string }>;
 }) {
   const { category } = await params;
 
@@ -50,10 +53,11 @@ export default async function AvailableCategoryPage({
 
   return (
     <main className="max-w-5xl mx-auto p-6">
-      { getIconFromCategory(category) ?
-        <PageHeading titleText={ categoryDoc.plural_title } icon={ getIconFromCategory(category)! } /> :
-        <PageHeading titleText={ categoryDoc.plural_title }/>
-      }
+      {getIconFromCategory(category) ? (
+        <PageHeading titleText={categoryDoc.plural_title} icon={getIconFromCategory(category)!} />
+      ) : (
+        <PageHeading titleText={categoryDoc.plural_title} />
+      )}
       <ArtGrid artworks={artworks} />
     </main>
   );

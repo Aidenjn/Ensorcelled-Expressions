@@ -1,2 +1,2 @@
-export * from "./getCategoryFromSlug";
-export * from "./getCategoriesFromTags";
+export * from './getCategoryFromSlug';
+export * from './getCategoriesFromTags';

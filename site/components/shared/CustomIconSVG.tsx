@@ -1,24 +1,24 @@
-import SpiralCutGazeIcon from "@/public/custom_graphics/spiral_cut_gaze.svg";
-import SleepyIcon from "@/public/custom_graphics/sleep.svg";
-import StarryEyesIcon from "@/public/custom_graphics/starry_eyes.svg";
-import ExcitedGlaceIcon from "@/public/custom_graphics/excited_gaze_down.svg";
-import JoySquintIcon from "@/public/custom_graphics/joy_squint.svg";
-import AlienIcon from "@/public/custom_graphics/alien.svg";
-import DogIcon from "@/public/custom_graphics/dog.svg";
-import ConfusedIcon from "@/public/custom_graphics/confused.svg";
-import DemonIcon from "@/public/custom_graphics/demon.svg";
-import MugIcon from "@/public/custom_graphics/mug.svg";
-import PotIcon from "@/public/custom_graphics/pot.svg";
-import DispenserIcon from "@/public/custom_graphics/dispenser.svg";
-import ContainerIcon from "@/public/custom_graphics/liddedcontainer.svg";
-import OddityIcon from "@/public/custom_graphics/oddity.svg";
-import GoblinIcon from "@/public/custom_graphics/goblin.svg";
-import GnomeIcon from "@/public/custom_graphics/gnome.svg";
-import BirdIcon from  "@/public/custom_graphics/bird.svg";
-import CatIcon from "@/public/custom_graphics/cat.svg";
-import TriclopesIcon from "@/public/custom_graphics/triclopes.svg";
-import { FC } from "react";
-import { CustomIcon } from "@/lib/types/CustomIcon";
+import SpiralCutGazeIcon from '@/public/custom_graphics/spiral_cut_gaze.svg';
+import SleepyIcon from '@/public/custom_graphics/sleep.svg';
+import StarryEyesIcon from '@/public/custom_graphics/starry_eyes.svg';
+import ExcitedGlaceIcon from '@/public/custom_graphics/excited_gaze_down.svg';
+import JoySquintIcon from '@/public/custom_graphics/joy_squint.svg';
+import AlienIcon from '@/public/custom_graphics/alien.svg';
+import DogIcon from '@/public/custom_graphics/dog.svg';
+import ConfusedIcon from '@/public/custom_graphics/confused.svg';
+import DemonIcon from '@/public/custom_graphics/demon.svg';
+import MugIcon from '@/public/custom_graphics/mug.svg';
+import PotIcon from '@/public/custom_graphics/pot.svg';
+import DispenserIcon from '@/public/custom_graphics/dispenser.svg';
+import ContainerIcon from '@/public/custom_graphics/liddedcontainer.svg';
+import OddityIcon from '@/public/custom_graphics/oddity.svg';
+import GoblinIcon from '@/public/custom_graphics/goblin.svg';
+import GnomeIcon from '@/public/custom_graphics/gnome.svg';
+import BirdIcon from '@/public/custom_graphics/bird.svg';
+import CatIcon from '@/public/custom_graphics/cat.svg';
+import TriclopesIcon from '@/public/custom_graphics/triclopes.svg';
+import { FC } from 'react';
+import { CustomIcon } from '@/lib/types/CustomIcon';
 
 // Will choose this as last resort
 const DEFAULT_ICON: FC<React.SVGProps<SVGSVGElement>> = SpiralCutGazeIcon;
@@ -61,20 +61,16 @@ const ICONS_ARRAY_FOR_RANDOM_SELECTION: CustomIcon[] = [
   CustomIcon.Triclopes,
   CustomIcon.Cat,
   CustomIcon.Goblin,
-]
+];
 
 // Props for generic icon component
 interface IconProps {
-  icon?: CustomIcon;   // optional specific icon
-  seed?: string;       // optional deterministic seed
+  icon?: CustomIcon; // optional specific icon
+  seed?: string; // optional deterministic seed
   className?: string;
 }
 
-const CustomIconSVG: FC<IconProps> = ({
-  icon,
-  seed,
-  className,
-}) => {
+const CustomIconSVG: FC<IconProps> = ({ icon, seed, className }) => {
   let IconComponent: FC<React.SVGProps<SVGSVGElement>>;
 
   if (icon) {
@@ -83,11 +79,15 @@ const CustomIconSVG: FC<IconProps> = ({
   } else if (seed) {
     // Deterministic random icon based on seed
     const hash = [...seed].reduce((acc, c) => acc + c.charCodeAt(0), 0);
-    const randomType: CustomIcon | undefined = ICONS_ARRAY_FOR_RANDOM_SELECTION[hash % ICONS_ARRAY_FOR_RANDOM_SELECTION.length];
+    const randomType: CustomIcon | undefined =
+      ICONS_ARRAY_FOR_RANDOM_SELECTION[hash % ICONS_ARRAY_FOR_RANDOM_SELECTION.length];
     IconComponent = randomType ? ICON_MAP[randomType] : DEFAULT_ICON;
   } else {
     // Fully random icon
-    const randomType: CustomIcon | undefined = ICONS_ARRAY_FOR_RANDOM_SELECTION[Math.floor(Math.random() * ICONS_ARRAY_FOR_RANDOM_SELECTION.length)];
+    const randomType: CustomIcon | undefined =
+      ICONS_ARRAY_FOR_RANDOM_SELECTION[
+        Math.floor(Math.random() * ICONS_ARRAY_FOR_RANDOM_SELECTION.length)
+      ];
     IconComponent = randomType ? ICON_MAP[randomType] : DEFAULT_ICON;
   }
 

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -12,11 +12,11 @@ import MobileMenuCollapseButton from './MobileMenuCollapseButton';
 
 export default function Navbar() {
   // Navbar will show navigable pages for only the functional form categories
-  const CATEGORIES = ALL_CATEGORIES.filter((category) => (
-    category.categoryFamily === CategoryFamily.FunctionForm
-  ));
+  const CATEGORIES = ALL_CATEGORIES.filter(
+    (category) => category.categoryFamily === CategoryFamily.FunctionForm,
+  );
 
-  const GALLERY_DROPDOWN = CATEGORIES.map(c => ({
+  const GALLERY_DROPDOWN = CATEGORIES.map((c) => ({
     name: c.title,
     icon: c.icon,
     href: `/gallery/category/${c.slug}`,
@@ -54,17 +54,12 @@ export default function Navbar() {
       <div className="relative bg-foreground pointer-events-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-
             <NavLogo />
 
             {/* Desktop Nav */}
             <ul className="hidden md:flex items-center space-x-6">
-              {NAV_LINKS.map(link => (
-                <NavItem
-                  key={link.href}
-                  {...link}
-                  icon={link.icon}
-                />
+              {NAV_LINKS.map((link) => (
+                <NavItem key={link.href} {...link} icon={link.icon} />
               ))}
             </ul>
 
@@ -72,10 +67,9 @@ export default function Navbar() {
             <div className="md:hidden">
               <MobileMenuCollapseButton
                 open={mobileMenuOpen}
-                onClick={() => setMobileMenuOpen(prev => !prev)}
+                onClick={() => setMobileMenuOpen((prev) => !prev)}
               />
             </div>
-
           </div>
         </div>
 
@@ -88,7 +82,7 @@ export default function Navbar() {
               exit={{ height: 0, opacity: 0 }}
               className="md:hidden bg-foreground overflow-hidden"
             >
-              {NAV_LINKS.map(link => (
+              {NAV_LINKS.map((link) => (
                 <NavItem
                   key={link.href}
                   {...link}

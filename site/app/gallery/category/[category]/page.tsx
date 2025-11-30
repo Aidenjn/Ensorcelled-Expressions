@@ -1,5 +1,5 @@
 import { client } from '@/lib/sanity';
-import ArtGrid from "@/components/shared/ArtGrid";
+import ArtGrid from '@/components/shared/ArtGrid';
 import PageHeading from '@/components/shared/PageHeading';
 import { notFound } from 'next/navigation';
 import { Category } from '@/lib/types/Category';
@@ -26,7 +26,7 @@ const artworksQuery = `
 export default async function GalleryCategoryPage({
   params,
 }: {
-  params: Promise<{ category: string }>
+  params: Promise<{ category: string }>;
 }) {
   const { category } = await params;
 
@@ -44,10 +44,11 @@ export default async function GalleryCategoryPage({
 
   return (
     <main>
-      { categoryObject ?
-        <PageHeading titleText={ categoryObject.title } icon={ categoryObject.icon } /> :
-        <PageHeading titleText={ categoryDoc.plural_title }/>
-      }
+      {categoryObject ? (
+        <PageHeading titleText={categoryObject.title} icon={categoryObject.icon} />
+      ) : (
+        <PageHeading titleText={categoryDoc.plural_title} />
+      )}
       <ArtGrid artworks={artworks} />
     </main>
   );

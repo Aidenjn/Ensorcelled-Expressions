@@ -7,11 +7,12 @@ export default async function ForSaleGalleryPage() {
       <PageHeading titleText="Coming 2026" />
       <ComingSoonIcon className="stroke-foreground w-full h-34 my-9" />
       <p className="text-left mt-4 mb-4">
-        I plan to have items available to purchase during Spring in 2026.
-        I will make the official announcement of when pieces are available on my Instagram account{" "}
+        I plan to have items available to purchase during Spring in 2026. I will make the official
+        announcement of when pieces are available on my Instagram account{' '}
         <a href="https://www.instagram.com/ensorcelledexpressions?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr">
           @EnsorcelledExpressions
-        </a>.
+        </a>
+        .
       </p>
     </div>
   );

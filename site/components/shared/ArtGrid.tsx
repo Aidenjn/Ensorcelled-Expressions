@@ -8,5 +8,5 @@ export default function ArtGrid({ artworks }: { artworks: Artwork[] }) {
         <ArtworkCard key={artwork._id} artwork={artwork} />
       ))}
     </div>
-  )
+  );
 }
