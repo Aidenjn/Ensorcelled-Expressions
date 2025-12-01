@@ -95,7 +95,7 @@ export const ALL_CATEGORIES: Category[] = [
     categoryFamily: CategoryFamily.AstheticForm,
   },
   {
-    title: 'Snot-Nosed Fellows',
+    title: 'Snotty Guys',
     descriptor: 'boogery',
     slug: 'boogery',
     icon: CustomIcon.Boogery,
