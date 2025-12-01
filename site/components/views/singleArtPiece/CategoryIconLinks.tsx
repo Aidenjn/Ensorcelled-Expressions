@@ -25,7 +25,6 @@ function sortCategories(categories: Category[]) {
 export default function CategoryIconLinks({ categories }: { categories: Category[] }) {
   const oneCategory: boolean = categories.length === 1;
   if (!oneCategory) sortCategories(categories);
-  console.log(categories);
 
   return (
     <div className="flex justify-center gap-5">

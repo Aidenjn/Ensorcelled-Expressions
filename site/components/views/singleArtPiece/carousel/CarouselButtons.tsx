@@ -9,10 +9,24 @@ export default function CarouselButtons({
   onPrev: () => void;
   onNext: () => void;
 }) {
+  const variants = {
+    initial: {
+      color: "var(--color-background)",
+      borderColor: "var(--color-foreground)",
+    },
+    tap: {
+      scale: 0.8,
+      color: "var(--color-hover_background_color)",
+      borderColor: "var(--color-hover_background_color)",
+    }
+  };
+
   return (
     <div className="flex items-center gap-4">
       <motion.button
-        whileTap={{ scale: 0.8 }}
+        variants={variants}
+        initial="initial"
+        whileTap="tap"
         transition={{ type: 'spring', stiffness: 500, damping: 20 }}
         onClick={onPrev}
         className="carousel-button"
@@ -21,11 +35,9 @@ export default function CarouselButtons({
       </motion.button>
 
       <motion.button
-        whileTap={{
-          scale: 0.8,
-          color: 'var(--color-hover_background_color)',
-          borderColor: 'var(--color-hover_background_color)',
-        }}
+        variants={variants}
+        initial="initial"
+        whileTap="tap"
         transition={{ type: 'spring', stiffness: 500, damping: 20 }}
         onClick={onNext}
         className="carousel-button"
