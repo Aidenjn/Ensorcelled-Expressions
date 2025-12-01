@@ -82,6 +82,18 @@ export default function Carousel({
             exit="exit"
             transition={{ duration: 0.35, ease: 'easeOut' }}
             className="absolute inset-0 z-20"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.15}
+            onDragEnd={(e, info) => {
+              const swipe = info.offset.x;
+
+              if (swipe < -50) {
+                next(); // swipe left → next
+              } else if (swipe > 50) {
+                prev(); // swipe right → prev
+              }
+            }}
           >
             <WavyBorderImage
               imageUrl={imageUrl}
