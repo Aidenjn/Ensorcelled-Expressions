@@ -17,6 +17,18 @@ import GnomeIcon from '@/public/custom_graphics/gnome.svg';
 import BirdIcon from '@/public/custom_graphics/bird.svg';
 import CatIcon from '@/public/custom_graphics/cat.svg';
 import TriclopesIcon from '@/public/custom_graphics/triclopes.svg';
+
+import BoogerFaceIcon from '@/public/custom_graphics/booger.svg';
+import CyclopsIcon from '@/public/custom_graphics/cyclopes.svg';
+import DisgustedIcon from '@/public/custom_graphics/disgusted.svg';
+import ElephantIcon from '@/public/custom_graphics/elephant.svg';
+import HauntedIcon from '@/public/custom_graphics/haunted.svg';
+import LampIcon from '@/public/custom_graphics/lamp.svg';
+import SerpentIcon from '@/public/custom_graphics/reptilian.svg';
+import RobotIcon from '@/public/custom_graphics/robot.svg';
+import SoapTrayIcon from '@/public/custom_graphics/soap_tray.svg';
+import VaseIcon from '@/public/custom_graphics/vase.svg';
+
 import { FC } from 'react';
 import { CustomIcon } from '@/lib/types/CustomIcon';
 
@@ -44,6 +56,16 @@ const ICON_MAP: Record<CustomIcon, FC<React.SVGProps<SVGSVGElement>>> = {
   [CustomIcon.Bird]: BirdIcon,
   [CustomIcon.Triclopes]: TriclopesIcon,
   [CustomIcon.Cat]: CatIcon,
+  [CustomIcon.Boogery]: BoogerFaceIcon,
+  [CustomIcon.Disgusted]: DisgustedIcon,
+  [CustomIcon.Cyclops]: CyclopsIcon,
+  [CustomIcon.Elephant]: ElephantIcon,
+  [CustomIcon.Haunted]: HauntedIcon,
+  [CustomIcon.Lamp]: LampIcon,
+  [CustomIcon.Serpent]: SerpentIcon,
+  [CustomIcon.Robot]: RobotIcon,
+  [CustomIcon.SoapTray]: SoapTrayIcon,
+  [CustomIcon.Vase]: VaseIcon,
 };
 
 const ICONS_ARRAY_FOR_RANDOM_SELECTION: CustomIcon[] = [
@@ -61,6 +83,13 @@ const ICONS_ARRAY_FOR_RANDOM_SELECTION: CustomIcon[] = [
   CustomIcon.Triclopes,
   CustomIcon.Cat,
   CustomIcon.Goblin,
+  CustomIcon.Boogery,
+  CustomIcon.Disgusted,
+  CustomIcon.Cyclops,
+  CustomIcon.Elephant,
+  CustomIcon.Haunted,
+  CustomIcon.Serpent,
+  CustomIcon.Robot,
 ];
 
 // Props for generic icon component

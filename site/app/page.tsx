@@ -14,7 +14,7 @@ export default function Home() {
         image_url="/images/greenware_mug.jpeg"
         heading="Emotionally Expressive"
         flow_left={false}
-        icon={CustomIcon.Dog}
+        icon={CustomIcon.Disgusted}
       >
         {`I strive to make my art emotionally expressive. I do this by twisting (often inhuman) faces
         into my work. Through form I create expressions that invite answers to the question: `}
@@ -24,7 +24,7 @@ export default function Home() {
         image_url="/images/aero_press_bev.jpeg"
         heading="Functional with Purpose"
         flow_left={true}
-        icon={CustomIcon.Triclopes}
+        icon={CustomIcon.Robot}
       >
         {`It is important to me that every piece I make, in addition to being decorative, serves at
         least one practical function. I find joy in seeing my work engaged with, so whether it be as
