@@ -11,14 +11,14 @@ export default function CarouselButtons({
 }) {
   const variants = {
     initial: {
-      color: "var(--color-background)",
-      borderColor: "var(--color-foreground)",
+      color: 'var(--color-background)',
+      borderColor: 'var(--color-foreground)',
     },
     tap: {
       scale: 0.8,
-      color: "var(--color-hover_background_color)",
-      borderColor: "var(--color-hover_background_color)",
-    }
+      color: 'var(--color-hover_background_color)',
+      borderColor: 'var(--color-hover_background_color)',
+    },
   };
 
   return (

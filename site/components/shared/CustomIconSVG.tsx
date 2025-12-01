@@ -72,8 +72,8 @@ interface IconProps {
 
 const CustomIconSVG: FC<IconProps> = ({
   icon,
-  seed = "an_ensorcercelled_default_seed",
-  className
+  seed = 'an_ensorcercelled_default_seed',
+  className,
 }) => {
   let IconComponent: FC<React.SVGProps<SVGSVGElement>>;
 

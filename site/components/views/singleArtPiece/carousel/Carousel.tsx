@@ -45,7 +45,9 @@ export default function Carousel({
   };
 
   const image: SanityImage | undefined = images[index];
-  const imageUrl = image ? urlFor(image).width(800).height(600).url() : "ERROR: could not get url of undefined image";
+  const imageUrl = image
+    ? urlFor(image).width(800).height(600).url()
+    : 'ERROR: could not get url of undefined image';
 
   // Variants
   const variants = {

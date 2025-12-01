@@ -55,7 +55,7 @@ export default defineConfig([
     settings: { react: { version: 'detect' } },
     rules: {
       'react/react-in-jsx-scope': 'off', // Next.js handles this
-      'react/prop-types': 'off',         // TypeScript handles this
+      'react/prop-types': 'off', // TypeScript handles this
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
       // let the default `react/no-unescaped-entities` stay, you can ignore the warnings
@@ -66,13 +66,28 @@ export default defineConfig([
   // 4️⃣ JSON files
   //
   { files: ['**/*.json'], plugins: { json }, language: 'json/json', extends: ['json/recommended'] },
-  { files: ['**/*.jsonc'], plugins: { json }, language: 'json/jsonc', extends: ['json/recommended'] },
-  { files: ['**/*.json5'], plugins: { json }, language: 'json/json5', extends: ['json/recommended'] },
+  {
+    files: ['**/*.jsonc'],
+    plugins: { json },
+    language: 'json/jsonc',
+    extends: ['json/recommended'],
+  },
+  {
+    files: ['**/*.json5'],
+    plugins: { json },
+    language: 'json/json5',
+    extends: ['json/recommended'],
+  },
 
   //
   // 5️⃣ Markdown files
   //
-  { files: ['**/*.md'], plugins: { markdown }, language: 'markdown/gfm', extends: ['markdown/recommended'] },
+  {
+    files: ['**/*.md'],
+    plugins: { markdown },
+    language: 'markdown/gfm',
+    extends: ['markdown/recommended'],
+  },
 
   //
   // 6️⃣ CSS files

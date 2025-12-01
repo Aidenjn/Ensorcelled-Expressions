@@ -26,18 +26,18 @@ export default function ClosingStorySection() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="max-w-2xl mx-auto text-lg"
       >
-        { 'Interested in my work? Feel free to explore my '}
+        {'Interested in my work? Feel free to explore my '}
         <Link href="/gallery" className="nav-link-in-content">
-          { 'portfolio' }
+          {'portfolio'}
         </Link>
-          { `. You can also see what I've been up to recently on my Instagram page ` }
+        {`. You can also see what I've been up to recently on my Instagram page `}
         <Link
           href="https://www.instagram.com/ensorcelledexpressions?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr"
           className="nav-link-in-content"
         >
-          { '@EnsorcelledExpressions' }
+          {'@EnsorcelledExpressions'}
         </Link>
-        { '.' }
+        {'.'}
       </motion.p>
     </section>
   );
