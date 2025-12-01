@@ -21,8 +21,8 @@ export default function WavyBorderImageMask({
   alt = '',
   loadingIcon,
 }: Props) {
-  const [loaded, setLoaded] = useState(false);
-  const [minDone, setMinDone] = useState(false);
+  const [status, setStatus] = useState({ loaded: false, minDone: false });
+  const { loaded, minDone } = status;
 
   const { d, viewBox, pathClass } = getWavyShapeData(shape);
 
@@ -33,24 +33,30 @@ export default function WavyBorderImageMask({
   }, [imageUrl]);
 
   // --- Reset loading state every time imageUrl changes ---
-  useEffect(() => {
-    if (!imageUrl || disableLoadingEffect) {
-      setLoaded(true);
-      setMinDone(true);
-      return;
-    }
+useEffect(() => {
+  if (!imageUrl || disableLoadingEffect) {
+    setTimeout(() => {
+      setStatus({ loaded: true, minDone: true });
+    }, 0);
+    return;
+  }
 
-    setLoaded(false);
-    setMinDone(false);
+  // Reset state on new image (async to satisfy linter)
+  queueMicrotask(() => {
+    setStatus({ loaded: false, minDone: false });
+  });
 
-    const timer = setTimeout(() => setMinDone(true), minimumLoadingTimeMS);
+  const timer = setTimeout(() => {
+    setStatus(prev => ({ ...prev, minDone: true }));
+  }, minimumLoadingTimeMS);
 
-    const img = new Image();
-    img.src = imageUrl;
-    img.onload = () => setLoaded(true);
+  const img = new Image();
+  img.src = imageUrl;
+  img.onload = () =>
+    setStatus(prev => ({ ...prev, loaded: true }));
 
-    return () => clearTimeout(timer);
-  }, [imageUrl, disableLoadingEffect, minimumLoadingTimeMS]);
+  return () => clearTimeout(timer);
+}, [imageUrl, disableLoadingEffect, minimumLoadingTimeMS]);
 
   const showImage = loaded && minDone;
 

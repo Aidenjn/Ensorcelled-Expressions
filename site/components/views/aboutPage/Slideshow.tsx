@@ -23,8 +23,6 @@ export default function Slideshow({
 
   const SLIDE_DIST = 30;
 
-  if (!images || images.length === 0) return null;
-
   // Preload local images
   useEffect(() => {
     images.forEach((src) => {
@@ -46,6 +44,7 @@ export default function Slideshow({
     return () => clearInterval(id);
   }, [images.length, interval]);
 
+  if (!images || images.length === 0) return null;
   const imageUrl = images[index];
 
   // Animation variants

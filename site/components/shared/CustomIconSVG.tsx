@@ -70,24 +70,21 @@ interface IconProps {
   className?: string;
 }
 
-const CustomIconSVG: FC<IconProps> = ({ icon, seed, className }) => {
+const CustomIconSVG: FC<IconProps> = ({
+  icon,
+  seed = "an_ensorcercelled_default_seed",
+  className
+}) => {
   let IconComponent: FC<React.SVGProps<SVGSVGElement>>;
 
   if (icon) {
     // Use the specified icon
     IconComponent = ICON_MAP[icon];
-  } else if (seed) {
+  } else {
     // Deterministic random icon based on seed
-    const hash = [...seed].reduce((acc, c) => acc + c.charCodeAt(0), 0);
+    const hash = [...seed].reduce((acc, c) => (acc * 31 + c.charCodeAt(0)) >>> 0, 0);
     const randomType: CustomIcon | undefined =
       ICONS_ARRAY_FOR_RANDOM_SELECTION[hash % ICONS_ARRAY_FOR_RANDOM_SELECTION.length];
-    IconComponent = randomType ? ICON_MAP[randomType] : DEFAULT_ICON;
-  } else {
-    // Fully random icon
-    const randomType: CustomIcon | undefined =
-      ICONS_ARRAY_FOR_RANDOM_SELECTION[
-        Math.floor(Math.random() * ICONS_ARRAY_FOR_RANDOM_SELECTION.length)
-      ];
     IconComponent = randomType ? ICON_MAP[randomType] : DEFAULT_ICON;
   }
 

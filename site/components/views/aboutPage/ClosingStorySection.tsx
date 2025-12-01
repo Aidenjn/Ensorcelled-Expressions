@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { CustomIcon } from '@/lib/types/CustomIcon';
 import CustomIconSVG from '@/components/shared/CustomIconSVG';
+import Link from 'next/link';
 
 export default function ClosingStorySection() {
   return (
@@ -25,18 +26,18 @@ export default function ClosingStorySection() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="max-w-2xl mx-auto text-lg"
       >
-        Interested in my work? Feel free to explore my{' '}
-        <a href="/gallery" className="nav-link-in-content">
-          portfolio
-        </a>
-        . You can also see what I've been up to recently on my Instagram page{' '}
-        <a
+        { 'Interested in my work? Feel free to explore my '}
+        <Link href="/gallery" className="nav-link-in-content">
+          { 'portfolio' }
+        </Link>
+          { `. You can also see what I've been up to recently on my Instagram page ` }
+        <Link
           href="https://www.instagram.com/ensorcelledexpressions?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr"
           className="nav-link-in-content"
         >
-          @EnsorcelledExpressions
-        </a>
-        .
+          { '@EnsorcelledExpressions' }
+        </Link>
+        { '.' }
       </motion.p>
     </section>
   );

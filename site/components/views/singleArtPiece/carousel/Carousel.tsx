@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { urlFor } from '@/lib/image';
+import { urlFor } from '@/lib/sanity';
 import { WavyShape } from '@/lib/types/WavyShapes';
 import WavyBorderImage from '@/components/shared/wavyBorderImage/WavyBorderImage';
 import CarouselButtons from './CarouselButtons';
@@ -22,8 +22,6 @@ export default function Carousel({
 
   const SLIDE_DIST = 30;
 
-  if (!images || images.length === 0) return null;
-
   // Preload images so that they appear immeadiately when flipping through the carousel
   useEffect(() => {
     images.forEach((img) => {
@@ -31,6 +29,8 @@ export default function Carousel({
       preload.src = urlFor(img).width(800).height(600).url();
     });
   }, [images]);
+
+  if (!images || images.length === 0) return null;
 
   const next = () => {
     setHasInteracted(true);
@@ -44,7 +44,8 @@ export default function Carousel({
     setIndex((i) => (i - 1 + images.length) % images.length);
   };
 
-  const imageUrl = urlFor(images[index]).width(800).height(600).url();
+  const image: SanityImage | undefined = images[index];
+  const imageUrl = image ? urlFor(image).width(800).height(600).url() : "ERROR: could not get url of undefined image";
 
   // Variants
   const variants = {

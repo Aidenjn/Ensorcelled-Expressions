@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 import js from '@eslint/js';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
@@ -14,19 +13,14 @@ import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
   //
-  // Base JS rules
+  // 1️⃣ Base JS/TS rules (non-JSX)
   //
   {
-    files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    plugins: {
-      js,
-      react: pluginReact,
-      'react-hooks': pluginReactHooks,
-    },
+    files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
+    plugins: { js },
     extends: [
       js.configs.recommended,
-      next, // Next.js rules
-      prettier, // Disable ESLint rules that conflict with Prettier
+      prettier, // disable conflicts with Prettier
     ],
     languageOptions: {
       globals: { ...globals.browser, ...globals.node },
@@ -34,11 +28,11 @@ export default defineConfig([
   },
 
   //
-  // TypeScript rules (recommended + strict)
+  // 2️⃣ TypeScript strict rules
   //
   ...tseslint.configs.recommended,
-  ...tseslint.configs['recommended-type-checked'], // enables type-aware rules
-  ...tseslint.configs['strict-type-checked'], // strictest TS linting
+  ...tseslint.configs['recommended-type-checked'],
+  ...tseslint.configs['strict-type-checked'],
   {
     rules: {
       '@typescript-eslint/no-explicit-any': 'error',
@@ -52,52 +46,36 @@ export default defineConfig([
   },
 
   //
-  // React-specific strict rules
+  // 3️⃣ React + Next.js + JSX/TSX rules
   //
   {
     files: ['**/*.{jsx,tsx}'],
-    settings: {
-      react: {
-        version: 'detect',
-      },
-    },
+    plugins: { react: pluginReact, 'react-hooks': pluginReactHooks },
+    extends: [next, prettier],
+    settings: { react: { version: 'detect' } },
     rules: {
       'react/react-in-jsx-scope': 'off', // Next.js handles this
-      'react/prop-types': 'off', // TypeScript handles this
+      'react/prop-types': 'off',         // TypeScript handles this
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
+      // let the default `react/no-unescaped-entities` stay, you can ignore the warnings
     },
   },
 
   //
-  // JSON, JSONC, JSON5
+  // 4️⃣ JSON files
   //
   { files: ['**/*.json'], plugins: { json }, language: 'json/json', extends: ['json/recommended'] },
-  {
-    files: ['**/*.jsonc'],
-    plugins: { json },
-    language: 'json/jsonc',
-    extends: ['json/recommended'],
-  },
-  {
-    files: ['**/*.json5'],
-    plugins: { json },
-    language: 'json/json5',
-    extends: ['json/recommended'],
-  },
+  { files: ['**/*.jsonc'], plugins: { json }, language: 'json/jsonc', extends: ['json/recommended'] },
+  { files: ['**/*.json5'], plugins: { json }, language: 'json/json5', extends: ['json/recommended'] },
 
   //
-  // Markdown files
+  // 5️⃣ Markdown files
   //
-  {
-    files: ['**/*.md'],
-    plugins: { markdown },
-    language: 'markdown/gfm',
-    extends: ['markdown/recommended'],
-  },
+  { files: ['**/*.md'], plugins: { markdown }, language: 'markdown/gfm', extends: ['markdown/recommended'] },
 
   //
-  // CSS files
+  // 6️⃣ CSS files
   //
   { files: ['**/*.css'], plugins: { css }, language: 'css/css', extends: ['css/recommended'] },
 ]);

@@ -3,7 +3,7 @@
 import { Artwork } from '@/lib/types/SanityTypes';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { urlFor } from '@/lib/image';
+import { urlFor } from '@/lib/sanity';
 import WavyBorderImage from '@/components/shared/wavyBorderImage/WavyBorderImage';
 import HoverOverlay from '@/components/shared/HoverOverlay';
 import React from 'react';
