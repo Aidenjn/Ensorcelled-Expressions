@@ -2,10 +2,10 @@ export default function robots() {
   return {
     rules: [
       {
-        userAgent: "*",
-        allow: "/",
+        userAgent: '*',
+        allow: '/',
       },
     ],
-    sitemap: "https://ensorcelledexpressions.com/sitemap.xml",
+    sitemap: 'https://ensorcelledexpressions.com/sitemap.xml',
   };
 }
