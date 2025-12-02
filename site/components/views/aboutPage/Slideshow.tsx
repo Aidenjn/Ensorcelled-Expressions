@@ -10,12 +10,12 @@ export default function Slideshow({
   images,
   interval = 5000,
   minimumLoadingTimeMS = 1500,
-  loadingIcon,
+  loadingIcons = [],
 }: {
   images: string[]; // local image paths or imported static files
   interval?: number;
   minimumLoadingTimeMS?: number;
-  loadingIcon?: CustomIcon;
+  loadingIcons?: CustomIcon[];
 }) {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -46,6 +46,7 @@ export default function Slideshow({
 
   if (!images || images.length === 0) return null;
   const imageUrl = images[index];
+  const loadingIcon = loadingIcons.length > 0 ? loadingIcons[index] : CustomIcon.SpiralCutGaze;
 
   // Animation variants
   const variants = {
@@ -67,6 +68,9 @@ export default function Slideshow({
     },
   };
 
+  // Take a little time to load the first image, then less for the subsequent ones.
+  const minLoadTime: number = initialLoad ? minimumLoadingTimeMS : 1000;
+
   return (
     <div className="flex flex-col items-center w-full h-full">
       <div className="relative w-full aspect-4/3 rounded-lg overflow-visible">
@@ -84,8 +88,7 @@ export default function Slideshow({
             <WavyBorderImage
               imageUrl={imageUrl}
               shape={WavyShape.Rectangle}
-              disableLoadingEffect={!initialLoad}
-              minimumLoadingTimeMS={minimumLoadingTimeMS}
+              minimumLoadingTimeMS={minLoadTime}
               loadingIcon={loadingIcon}
             />
           </motion.div>

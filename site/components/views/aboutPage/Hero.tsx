@@ -33,7 +33,15 @@ export default function Hero() {
             '/images/set_of_mugs.jpeg',
           ]}
           minimumLoadingTimeMS={1500}
-          loadingIcon={CustomIcon.SpiralCutGaze}
+          loadingIcons={[
+            CustomIcon.SpiralCutGaze,
+            CustomIcon.Dog,
+            CustomIcon.Goblin,
+            CustomIcon.Haunted,
+            CustomIcon.Demon,
+            CustomIcon.Boogery,
+            CustomIcon.Confused,
+          ]}
         />
       </div>
       <motion.p
