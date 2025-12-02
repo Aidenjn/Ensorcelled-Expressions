@@ -9,6 +9,7 @@ import { ALL_CATEGORIES } from '@/lib/constants/categories';
 import { CategoryFamily } from '@/lib/types/Category';
 import NavLogo from './NavLogo';
 import MobileMenuCollapseButton from './MobileMenuCollapseButton';
+import SearchBar from './SearchBar';
 
 export default function Navbar() {
   // Navbar will show navigable pages for only the functional form categories
@@ -70,6 +71,8 @@ export default function Navbar() {
                 onClick={() => setMobileMenuOpen((prev) => !prev)}
               />
             </div>
+
+            {/* <SearchBar/> */}
           </div>
         </div>
 
