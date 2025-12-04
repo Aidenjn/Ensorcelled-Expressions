@@ -1,6 +1,4 @@
-'use client';
-
-import { motion } from 'framer-motion';
+import FancyButton from '@/components/shared/FancyButton';
 
 export default function CarouselButtons({
   onPrev,
@@ -9,41 +7,20 @@ export default function CarouselButtons({
   onPrev: () => void;
   onNext: () => void;
 }) {
-  const variants = {
-    initial: {
-      color: 'var(--color-background)',
-      borderColor: 'var(--color-foreground)',
-    },
-    tap: {
-      scale: 0.8,
-      color: 'var(--color-hover_background_color)',
-      borderColor: 'var(--color-hover_background_color)',
-    },
-  };
-
   return (
     <div className="flex items-center gap-4">
-      <motion.button
-        variants={variants}
-        initial="initial"
-        whileTap="tap"
-        transition={{ type: 'spring', stiffness: 500, damping: 20 }}
+      <FancyButton
         onClick={onPrev}
-        className="carousel-button"
+        className='carousel-button'
       >
         ‹
-      </motion.button>
-
-      <motion.button
-        variants={variants}
-        initial="initial"
-        whileTap="tap"
-        transition={{ type: 'spring', stiffness: 500, damping: 20 }}
+      </FancyButton>
+      <FancyButton
         onClick={onNext}
         className="carousel-button"
       >
         ›
-      </motion.button>
+      </FancyButton>
     </div>
   );
 }
