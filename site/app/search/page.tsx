@@ -1,32 +1,29 @@
-'use client';
+"use client";
 
-import Script from 'next/script';
-// import { useSearchParams } from 'next/navigation';
+import { useSearchParams } from "next/navigation";
+import PageHeading from "@/components/shared/PageHeading";
+import { CustomIcon } from "@/lib/types/CustomIcon";
+import SearchBar from "@/components/shared/SearchBar";
+import SearchResults from "@/components/views/searchPage/SearchResults";
+import { useState } from "react";
 
 export default function SearchPage() {
-  // useSearchParams is safe here because this is fully client-rendered
-  // const searchParams = useSearchParams();
-  // const q: string = searchParams.get('q') ?? '';
-  const q: string = 'snotty joe';
+  const searchParams = useSearchParams();
+  const q: string = searchParams.get("q") ?? "";
+
   return (
-    <div className="p-6 max-w-3xl mx-auto">
-      {/* Load Google PSE */}
-      <Script
-        src="https://cse.google.com/cse.js?cx=a647357a79dd24deb"
-        strategy="afterInteractive"
-      />
+    <div className="p-6 max-w-full">
+      <PageHeading titleText="Search" icon={CustomIcon.Cyclops} />
 
-      <h1 className="text-2xl font-semibold mb-6">Search results</h1>
+      <div className="pt-8 max-w-full w-full flex justify-center">
+        <SearchBar currentQuery={q} />
+      </div>
 
-      {/* Show query if it exists */}
-      {q && (
-        <p className="text-gray-600 mb-4">
-          You searched for <b>{q}</b>
-        </p>
-      )}
-
-      {/* Google Custom Search results container */}
-      <div className="gcse-searchresults-only"></div>
+      <div className="pt-8 flex justify-center align-middle">
+        <div className="max-w-5xl -ml-[13px] -mr-[13px]">
+          {q && <SearchResults key={q}/>}
+        </div>
+      </div>
     </div>
   );
 }
