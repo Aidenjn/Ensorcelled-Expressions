@@ -5,7 +5,6 @@ import PageHeading from "@/components/shared/PageHeading";
 import { CustomIcon } from "@/lib/types/CustomIcon";
 import SearchBar from "@/components/shared/SearchBar";
 import SearchResults from "@/components/views/searchPage/SearchResults";
-import { useState } from "react";
 
 export default function SearchPage() {
   const searchParams = useSearchParams();
@@ -20,9 +19,7 @@ export default function SearchPage() {
       </div>
 
       <div className="pt-8 flex justify-center align-middle">
-        <div className="max-w-5xl -ml-[13px] -mr-[13px]">
-          {q && <SearchResults key={q}/>}
-        </div>
+        {q && <SearchResults key={q} query={q}/>}
       </div>
     </div>
   );

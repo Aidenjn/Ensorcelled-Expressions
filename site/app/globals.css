@@ -141,3 +141,20 @@ svg.splat {
     decoration-focus_text_color
     underline-offset-5;
 }
+
+/** WARNING: Below rules may break if google changes them for the embedded search component **/
+
+.gsc-table-cell-thumbnail, .gs-promotion-image-cell {
+    float: right;
+    display: block;
+    padding-left: 50px;
+}
+
+.gs-image {
+  float: right;
+}
+
+.gs-result .gs-image, .gs-result .gs-promotion-image {
+    border-radius: 10px;
+    min-width: 80px;
+}
