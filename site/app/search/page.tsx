@@ -1,14 +1,15 @@
-"use client";
+'use client';
 
-import { useSearchParams } from "next/navigation";
-import PageHeading from "@/components/shared/PageHeading";
-import { CustomIcon } from "@/lib/types/CustomIcon";
-import SearchBar from "@/components/shared/SearchBar";
-import SearchResults from "@/components/views/searchPage/SearchResults";
+import { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
+import PageHeading from '@/components/shared/PageHeading';
+import { CustomIcon } from '@/lib/types/CustomIcon';
+import SearchBar from '@/components/shared/SearchBar';
+import SearchResults from '@/components/views/searchView/SearchResults';
 
-export default function SearchPage() {
+function SearchPageLoaded() {
   const searchParams = useSearchParams();
-  const q: string = searchParams.get("q") ?? "";
+  const q: string = searchParams.get('q') ?? '';
 
   return (
     <div className="p-6 max-w-full">
@@ -19,8 +20,20 @@ export default function SearchPage() {
       </div>
 
       <div className="pt-8 flex justify-center align-middle">
-        {q && <SearchResults key={q} query={q}/>}
+        {q && (
+          <Suspense fallback={<div>Loading results...</div>}>
+            <SearchResults key={q} query={q} />
+          </Suspense>
+        )}
       </div>
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchPageLoaded />
+    </Suspense>
   );
 }

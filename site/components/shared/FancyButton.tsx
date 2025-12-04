@@ -2,22 +2,20 @@
 
 import { motion } from 'framer-motion';
 
-type buttonType = "button" | "submit" | "reset" | undefined;
+type buttonType = 'button' | 'submit' | 'reset' | undefined;
 
 export default function FancyButton({
-  onClick = ()=>{},
-  type = "button",
-  className = "bg-foreground border-2 border-foreground rounded-full px-3",
+  onClick = () => {},
+  type = 'button',
+  className = 'bg-foreground border-2 border-foreground rounded-full px-3',
   children,
-
 }: {
   onClick?: () => void;
-  type?:buttonType;
-  className?:string;
+  type?: buttonType;
+  className?: string;
   children: React.ReactNode;
-
 }) {
-  if (type === undefined) type = "button";
+  if (type === undefined) type = 'button';
   const variants = {
     initial: {
       color: 'var(--color-background)',
@@ -40,7 +38,7 @@ export default function FancyButton({
       onClick={onClick}
       className={className}
     >
-      { children }
+      {children}
     </motion.button>
   );
 }

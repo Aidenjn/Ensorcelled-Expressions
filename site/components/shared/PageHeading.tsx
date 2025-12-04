@@ -4,8 +4,8 @@ import { CustomIcon } from '@/lib/types/CustomIcon';
 import CustomIconSVG from './CustomIconSVG';
 import { motion } from 'framer-motion';
 import { Category } from '@/lib/types/Category';
-import GeneratedArtPieceDescriptionBlock from '../views/singleArtPiece/GeneratedArtPieceDescriptionBlock';
-import CategoryIconLinks from '../views/singleArtPiece/CategoryIconLinks';
+import GeneratedArtPieceDescriptionBlock from '../views/singleArtView/GeneratedArtPieceDescriptionBlock';
+import CategoryIconLinks from '../views/singleArtView/CategoryIconLinks';
 
 export default function PageHeading({
   titleText,

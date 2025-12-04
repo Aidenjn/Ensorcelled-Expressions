@@ -9,16 +9,10 @@ export default function CarouselButtons({
 }) {
   return (
     <div className="flex items-center gap-4">
-      <FancyButton
-        onClick={onPrev}
-        className='carousel-button'
-      >
+      <FancyButton onClick={onPrev} className="carousel-button">
         ‹
       </FancyButton>
-      <FancyButton
-        onClick={onNext}
-        className="carousel-button"
-      >
+      <FancyButton onClick={onNext} className="carousel-button">
         ›
       </FancyButton>
     </div>

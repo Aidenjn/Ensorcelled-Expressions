@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Script from 'next/script';
 
-function getCacheBusterString():string {
+function getCacheBusterString(): string {
   return `&t=${Date.now()}`;
 }
 

@@ -1,7 +1,7 @@
-import Hero from '@/components/views/aboutPage/Hero';
-import StorySection from '@/components/views/aboutPage/StorySection';
+import Hero from '@/components/views/aboutView/Hero';
+import StorySection from '@/components/views/aboutView/StorySection';
 import { CustomIcon } from '@/lib/types/CustomIcon';
-import ClosingStorySection from '@/components/views/aboutPage/ClosingStorySection';
+import ClosingStorySection from '@/components/views/aboutView/ClosingStorySection';
 
 export default function Home() {
   return (
