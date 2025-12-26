@@ -50,8 +50,6 @@ export default function StorySection({
         viewport={{ once: true }}
         className="md:w-1/2 md:pl-12 md:pr-12"
       >
-        {/* <h2 className="text-3xl font-semibold mb-4"><LogoIcon className="w-10 h-10 mr-5 stroke-white inline-block mr-5" />{ storySection.heading }</h2> */}
-
         <h2 className="text-3xl font-semibold mb-4">
           <CustomIconSVG
             icon={icon}

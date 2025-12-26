@@ -31,7 +31,7 @@ export default function Navbar() {
   const NAV_LINKS = [
     {
       name: 'About',
-      href: '/',
+      href: '/about',
       icon: CustomIcon.JoySquint,
     },
     {
