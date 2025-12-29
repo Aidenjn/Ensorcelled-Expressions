@@ -1,6 +1,8 @@
 'use client';
 
 import * as Tooltip from '@radix-ui/react-tooltip';
+import { AnimatePresence, motion } from 'motion/react';
+import { useState } from 'react';
 
 type CategoryIconTooltipProps = {
   children: React.ReactNode;
@@ -20,6 +22,7 @@ export default function CategoryIconTooltip({
   tip,
   side = 'left',
 }: CategoryIconTooltipProps) {
+  const [open, setOpen] = useState(false);
   const isTouch = useIsTouchDevice();
 
   // Do not display a tooltip if we are on a touchscreen
@@ -29,18 +32,26 @@ export default function CategoryIconTooltip({
 
   return (
     <Tooltip.Provider>
-      <Tooltip.Root delayDuration={500}>
+      <Tooltip.Root open={open} onOpenChange={setOpen} delayDuration={500}>
         <Tooltip.Trigger asChild>{children}</Tooltip.Trigger>
+
         <Tooltip.Portal>
-          <Tooltip.Content
-            sideOffset={6}
-            className="rounded bg-hover_background_color px-2 py-1 text-sm text-foreground capitalize"
-            side={side}
-            align="center"
-          >
-            {tip}
-            <Tooltip.Arrow width={8} height={6} className="fill-hover_background_color" />
-          </Tooltip.Content>
+          <AnimatePresence>
+            {open && (
+              <Tooltip.Content sideOffset={6} side={side} align="center" asChild>
+                <motion.div
+                  initial={{ opacity: 0, y: -4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.2 }}
+                  className="rounded bg-hover_background_color px-2 py-1 text-sm text-foreground capitalize"
+                >
+                  {tip}
+                  <Tooltip.Arrow width={8} height={6} className="fill-hover_background_color" />
+                </motion.div>
+              </Tooltip.Content>
+            )}
+          </AnimatePresence>
         </Tooltip.Portal>
       </Tooltip.Root>
     </Tooltip.Provider>
