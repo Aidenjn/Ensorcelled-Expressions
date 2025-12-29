@@ -6,6 +6,6 @@ export default function robots() {
         allow: '/',
       },
     ],
-    sitemap: 'https://ensorcelledexpressions.com/sitemap.xml',
+    sitemap: 'https://www.ensorcelledexpressions.com/sitemap.xml',
   };
 }

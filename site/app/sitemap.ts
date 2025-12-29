@@ -8,7 +8,7 @@ type ArtworkRecord = {
 };
 
 export default async function sitemap() {
-  const baseUrl = 'https://ensorcelledexpressions.com';
+  const baseUrl = 'https://www.ensorcelledexpressions.com';
 
   // Fetch dynamic art piece slugs from Sanity
   const artworks = await client.fetch<ArtworkRecord[]>(
