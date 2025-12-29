@@ -4,6 +4,7 @@ import CustomIconSVG from '@/components/shared/CustomIconSVG';
 import { Category, CategoryFamily } from '@/lib/types/Category';
 import { motion } from 'motion/react';
 import Link from 'next/link';
+import CategoryIconTooltip from './CategoryIconTooltip';
 
 // Sort categories to have aethetic categories first and functional categories last.
 function sortCategories(categories: Category[]) {
@@ -22,27 +23,38 @@ function sortCategories(categories: Category[]) {
   });
 }
 
+// Determines which side the tooltip should go based on the index and amount of categories.
+function chooseSide(index: number, category_amount: number) {
+  // If this index is on the left half, return left.
+  if (index < category_amount / 2) return "left";
+  return "right"
+}
+
 export default function CategoryIconLinks({ categories }: { categories: Category[] }) {
   const oneCategory: boolean = categories.length === 1;
   if (!oneCategory) sortCategories(categories);
 
   return (
-    <div className="flex justify-center gap-5">
-      {categories.map((category: Category) => {
+    <div className="flex flex-wrap justify-center gap-5">
+      {categories.map((category: Category, index: number) => {
         return (
-          <motion.button
-            className="stroke-background_text_color"
-            whileTap={{
-              scale: 0.8,
-              stroke: 'var(--color-hover_background_color)',
-            }}
-            transition={{ type: 'spring', stiffness: 500, damping: 20 }}
-            key={category.slug}
+          <CategoryIconTooltip
+            tip={category.descriptor}
+            key={category.title}
+            side={chooseSide(index, categories.length)}
           >
-            <Link href={`/gallery/category/${category.slug}`}>
-              <CustomIconSVG icon={category.icon} className="w-14 h-14 nav-link-in-content" />
-            </Link>
-          </motion.button>
+            <motion.div whileTap={{ scale: 0.8 }}>
+              <Link
+                href={`/gallery/category/${category.slug}`}
+                className="inline-flex stroke-background_text_color"
+              >
+                <CustomIconSVG
+                  icon={category.icon}
+                  className="w-14 h-14 nav-link-in-content"
+                />
+              </Link>
+            </motion.div>
+          </CategoryIconTooltip>
         );
       })}
     </div>
