@@ -5,7 +5,7 @@ import { CustomIcon } from '@/lib/types/CustomIcon';
 export default async function ForSaleGalleryPage() {
   return (
     <div>
-      <PageHeading titleText="About the Artist" icon={CustomIcon.JoySquint}/>
+      <PageHeading titleText="About the Artist" icon={CustomIcon.JoySquint} />
       <AboutSection />
     </div>
   );

@@ -1,26 +1,26 @@
 'use client';
 
-import * as Tooltip from "@radix-ui/react-tooltip";
-import { useEffect, useState } from "react";
+import * as Tooltip from '@radix-ui/react-tooltip';
+import { useEffect, useState } from 'react';
 
 type CategoryIconTooltipProps = {
   children: React.ReactNode;
   tip: string;
-  side?: "left" | "right"
-}
+  side?: 'left' | 'right';
+};
 
 function useIsTouchDevice() {
   const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
-    const media = window.matchMedia("(hover: none) and (pointer: coarse)");
+    const media = window.matchMedia('(hover: none) and (pointer: coarse)');
 
     setIsTouch(media.matches);
 
     const handler = (e: MediaQueryListEvent) => setIsTouch(e.matches);
-    media.addEventListener("change", handler);
+    media.addEventListener('change', handler);
 
-    return () => media.removeEventListener("change", handler);
+    return () => media.removeEventListener('change', handler);
   }, []);
 
   return isTouch;
@@ -29,7 +29,7 @@ function useIsTouchDevice() {
 export default function CategoryIconTooltip({
   children,
   tip,
-  side = "left"
+  side = 'left',
 }: CategoryIconTooltipProps) {
   const isTouch = useIsTouchDevice();
 
@@ -41,9 +41,7 @@ export default function CategoryIconTooltip({
   return (
     <Tooltip.Provider>
       <Tooltip.Root delayDuration={500}>
-        <Tooltip.Trigger asChild>
-          {children}
-        </Tooltip.Trigger>
+        <Tooltip.Trigger asChild>{children}</Tooltip.Trigger>
 
         <Tooltip.Portal>
           <Tooltip.Content
@@ -53,11 +51,7 @@ export default function CategoryIconTooltip({
             align="center"
           >
             {tip}
-            <Tooltip.Arrow
-              width={8}
-              height={6}
-              className="fill-hover_background_color"
-            />
+            <Tooltip.Arrow width={8} height={6} className="fill-hover_background_color" />
           </Tooltip.Content>
         </Tooltip.Portal>
       </Tooltip.Root>

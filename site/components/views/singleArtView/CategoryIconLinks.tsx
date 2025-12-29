@@ -26,8 +26,8 @@ function sortCategories(categories: Category[]) {
 // Determines which side the tooltip should go based on the index and amount of categories.
 function chooseSide(index: number, category_amount: number) {
   // If this index is on the left half, return left.
-  if (index < category_amount / 2) return "left";
-  return "right"
+  if (index < category_amount / 2) return 'left';
+  return 'right';
 }
 
 export default function CategoryIconLinks({ categories }: { categories: Category[] }) {
@@ -48,10 +48,7 @@ export default function CategoryIconLinks({ categories }: { categories: Category
                 href={`/gallery/category/${category.slug}`}
                 className="inline-flex stroke-background_text_color"
               >
-                <CustomIconSVG
-                  icon={category.icon}
-                  className="w-14 h-14 nav-link-in-content"
-                />
+                <CustomIconSVG icon={category.icon} className="w-14 h-14 nav-link-in-content" />
               </Link>
             </motion.div>
           </CategoryIconTooltip>
