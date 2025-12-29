@@ -1,7 +1,6 @@
 'use client';
 
 import * as Tooltip from '@radix-ui/react-tooltip';
-import { useEffect, useState } from 'react';
 
 type CategoryIconTooltipProps = {
   children: React.ReactNode;
@@ -9,21 +8,11 @@ type CategoryIconTooltipProps = {
   side?: 'left' | 'right';
 };
 
-function useIsTouchDevice() {
-  const [isTouch, setIsTouch] = useState(false);
+function useIsTouchDevice(): boolean {
+  // Return true only if we are in the browser and it's a touch device
+  if (typeof window === 'undefined') return false;
 
-  useEffect(() => {
-    const media = window.matchMedia('(hover: none) and (pointer: coarse)');
-
-    setIsTouch(media.matches);
-
-    const handler = (e: MediaQueryListEvent) => setIsTouch(e.matches);
-    media.addEventListener('change', handler);
-
-    return () => media.removeEventListener('change', handler);
-  }, []);
-
-  return isTouch;
+  return window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 }
 
 export default function CategoryIconTooltip({
@@ -42,7 +31,6 @@ export default function CategoryIconTooltip({
     <Tooltip.Provider>
       <Tooltip.Root delayDuration={500}>
         <Tooltip.Trigger asChild>{children}</Tooltip.Trigger>
-
         <Tooltip.Portal>
           <Tooltip.Content
             sideOffset={6}
