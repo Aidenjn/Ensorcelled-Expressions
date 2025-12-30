@@ -1,16 +1,13 @@
 # ꩜ Ensorcelled Expressions
-Showcase website and content managment for a handmade ceramic art gallery.
+Showcase website and content managment for a ceramic art gallery.
 
-This repository contains the full codebase for Ensorcelled Expressions, including:
+# 🪾 The Repo
+This repository contains the full codebase for the Ensorcelled Expressions gallery, including:
 - Next.js gallery website
 - Sanity Studio CMS
-- Shared configuration and workspace management
-
-This repo is structured as a npm workspace monorepo for simplicity, shared dependencies, and smoother development.
 
 
-
-# 🗂️ Repository Structure
+## 🗂️ Structure
 
 ```
 /
@@ -18,29 +15,31 @@ This repo is structured as a npm workspace monorepo for simplicity, shared depen
 │
 ├── cms        # Sanity Studio (locally run to manage content)
 │
-└── README.md
+├── README.md  # What you are reading
+│
+└── .gitignore # ignore rules that apply to both site and cms
 ```
 
 
 # 🚀 Technologies
 
-Frontend Site
+## Frontend Site (the gallery)
 - Next.js
 - React
 - Tailwind CSS
 - TypeScript
 - Framer Motion (animation library)
 
-CMS
+## CMS
 - Sanity v3 Studio
 
-Tooling
-- npm workspaces (monorepo)
+## Tooling
 - ESLint
+- Prettier
 - TypeScript
+- React
+- Next.js
 - Vercel (deployment)
-
-
 
 # 📦 Setup
 
@@ -97,6 +96,21 @@ cd cms
 npm run build
 ```
 
+## 🧽 Other Commands
+
+Lint the site code:
+
+```
+cd site
+npm run lint
+```
+
+Format the site code (using Prettier):
+
+```
+cd site
+npm run format
+```
 
 # 🚀 Deployment
 
@@ -112,13 +126,15 @@ When setting up the project in Vercel:
 
 Vercel automatically handles workspace-based installs.
 
+I have set up my deployments to trigger after a push to this repo.
+
 ## Sanity CMS (Content Managent Interface)
 
 The CMS is meant to be run locally to manage content. Hosting is optional and out of scope.
 
 # 📁 Git Ignore Rules
 
-Each project handles its own ignored files. The global rules include:
+Each project handles its own ignored files, but there are global ignores too. The global rules include:
 
 - node_modules/
 - .next/ (Next.js build output)
@@ -126,6 +142,7 @@ Each project handles its own ignored files. The global rules include:
 - Environment files (.env*)
 - OS junk files (.DS_Store)
 - Editor folders (.vscode/, .idea/)
+  
 
 # 📖 Useful Things of Note
 - The CMS and website share the same Git repository but operate independently.
