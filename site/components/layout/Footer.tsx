@@ -30,7 +30,7 @@ export default function Footer() {
               </a>
             ))}
           </div>
-          <div>© 2025 Aiden Nelson</div>
+          <div>Built by <a href='https://www.aidennelson.net'>Aiden Nelson</a></div>
         </div>
       </div>
     </footer>
