@@ -17,7 +17,7 @@ export default function AboutSection() {
       >
         <div className="relative w-full aspect-square sm:max-w-5/6 lg:max-w-3/5">
           <WavyBorderImage
-            imageUrl={'/images/me.jpg'}
+            imageUrl={'/images/me_with_dog.jpeg'}
             shape={WavyShape.Square}
             disableLoadingEffect={false}
             minimumLoadingTimeMS={1000}
