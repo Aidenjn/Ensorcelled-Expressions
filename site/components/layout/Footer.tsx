@@ -1,10 +1,11 @@
 import GraspHand from '@/public/custom_graphics/grasphand.svg';
-import { FaInstagram, FaFacebook, FaReddit } from 'react-icons/fa';
+import { FaInstagram, FaFacebook, FaReddit, FaPinterest } from 'react-icons/fa';
 
 export default function Footer() {
   const links = [
-    { href: 'https://facebook.com/ensorcelledexpressions', icon: <FaFacebook /> },
     { href: 'https://instagram.com/ensorcelledexpressions', icon: <FaInstagram /> },
+    { href: 'https://facebook.com/ensorcelledexpressions', icon: <FaFacebook /> },
+    { href: 'https://www.pinterest.com/ensorcelledexpressions/', icon: <FaPinterest /> },
     { href: 'https://www.reddit.com/user/EnsorcelledExpress', icon: <FaReddit /> },
     // { href: "https://etsy.com/ensorcelledexpressions", icon: <FaEtsy /> },
   ];
