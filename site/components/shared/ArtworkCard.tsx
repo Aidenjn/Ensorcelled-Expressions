@@ -16,11 +16,21 @@ export default function ArtworkCard({ artwork }: { artwork: Artwork }) {
 
   const imageUrl: string | undefined = imageUrlFetch ? imageUrlFetch : undefined;
 
+  // Detect if device supports hover
+  const [isHoverSupported, setIsHoverSupported] = React.useState(false);
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const hoverMediaQuery = window.matchMedia('(hover: hover)');
+      setIsHoverSupported(hoverMediaQuery.matches);
+    }
+  }, []);
+
   return (
     <motion.div
       initial="rest"
-      whileHover="hover"
       animate="rest"
+      whileHover={isHoverSupported ? 'hover' : undefined} // only apply hover on devices that support it
       className="relative w-full bg-background rounded-xl overflow-hidden cursor-pointer"
     >
       <Link href={`/gallery/${artwork.slug.current}`}>
