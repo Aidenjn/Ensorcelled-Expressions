@@ -30,6 +30,13 @@ export const ALL_CATEGORIES: Category[] = [
     categoryFamily: CategoryFamily.FunctionForm,
   },
   {
+    title: 'Containers',
+    descriptor: 'container',
+    slug: 'containers',
+    icon: CustomIcon.Container,
+    categoryFamily: CategoryFamily.FunctionForm,
+  },
+  {
     title: 'Oddities',
     descriptor: 'oddity',
     slug: 'oddities',
